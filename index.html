@@ -741,6 +741,22 @@
     .audio-controls { flex-direction: column; }
     .custom-player { width: 100%; }
   }
+
+  .audio-inline {
+  margin: 18px 0;
+  border: 1px solid var(--gold);
+  background: linear-gradient(to bottom, rgba(139,26,26,0.06), transparent);
+  padding: 12px 16px;
+}
+.audio-inline-label {
+  font-family: 'Cinzel', serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  color: var(--red);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  text-align: center;
+}
 </style>
 </head>
 <body>
@@ -764,6 +780,19 @@
 
     <article class="parchment-block">
       <h2>✦ El Origen de la Reforma ✦</h2>
+
+      <div class="audio-inline">
+  <div class="audio-inline-label">⚜ el origen de la reforma ⚜</div>  <!-- ← CHANGER LE TITRE -->
+  <div class="custom-player">
+    <button class="play-btn" onclick="togglePlayInline(this)">▶</button>
+    <div class="progress-wrap" onclick="saltarInline(event, this)">
+      <div class="progress-bar"></div>
+    </div>
+    <span class="time-display">0:00 / 0:00</span>
+    <button class="replay-btn" onclick="reiniciarInline(this)">↺ Reiniciar</button>
+  </div>
+  <audio src="origen.mp3" onended="resetInline(this)" ontimeupdate="updateInline(this)"></audio>  <!-- ← CHANGER LE FICHIER -->
+</div>
       <p class="drop-cap">
         En el año del Señor de mil quinientos diecisiete, un fraile agustino de nombre Martín Lutero clavó sus noventa y cinco tesis en las puertas de la iglesia del castillo de Wittenberg, en el Sacro Imperio Romano Germánico. Este acto, aparentemente modesto, encendió la llama de una revolución espiritual que sacudiría los cimientos de la Christianitas medieval.
       </p>
@@ -1177,6 +1206,35 @@ En las primeras tesis, Lutero desarrolló la idea del arrepentimiento como la lu
     const sec = Math.floor(s % 60).toString().padStart(2, '0');
     return m + ':' + sec;
   }
+  function togglePlayInline(btn) {
+  const audio = btn.closest('.audio-inline').querySelector('audio');
+  if (audio.paused) { audio.play(); btn.textContent = '⏸'; }
+  else { audio.pause(); btn.textContent = '▶'; }
+}
+function reiniciarInline(btn) {
+  const audio = btn.closest('.audio-inline').querySelector('audio');
+  audio.currentTime = 0; audio.play();
+  btn.closest('.custom-player').querySelector('.play-btn').textContent = '⏸';
+}
+function resetInline(audioEl) {
+  const player = audioEl.closest('.audio-inline').querySelector('.custom-player');
+  player.querySelector('.play-btn').textContent = '▶';
+  player.querySelector('.progress-bar').style.width = '0%';
+}
+function updateInline(audioEl) {
+  if (!audioEl.duration) return;
+  const player = audioEl.closest('.audio-inline').querySelector('.custom-player');
+  const pct = (audioEl.currentTime / audioEl.duration) * 100;
+  player.querySelector('.progress-bar').style.width = pct + '%';
+  player.querySelector('.time-display').textContent =
+    formatTime(audioEl.currentTime) + ' / ' + formatTime(audioEl.duration);
+}
+function saltarInline(e, wrap) {
+  const audio = wrap.closest('.audio-inline').querySelector('audio');
+  if (!audio.duration) return;
+  const rect = wrap.getBoundingClientRect();
+  audio.currentTime = ((e.clientX - rect.left) / rect.width) * audio.duration;
+}
 </script>
 </body>
 </html>
