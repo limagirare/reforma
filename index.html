@@ -1,0 +1,1181 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La Reforma Protestante — Crónica de los Siglos XVI</title>
+<link href="https://fonts.googleapis.com/css2?family=MedievalSharp&family=IM+Fell+English:ital@0;1&family=Cinzel+Decorative:wght@400;700&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --parchment: #f2e8c9;
+    --parchment-dark: #ddd0a0;
+    --ink: #1a0e05;
+    --ink-light: #3b2408;
+    --red: #8b1a1a;
+    --gold: #9a7c2e;
+    --gold-light: #c9a84c;
+    --shadow: rgba(20,10,0,0.5);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #0d0903;
+    background-image: 
+      repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(0,0,0,0.03) 40px, rgba(0,0,0,0.03) 41px),
+      repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(0,0,0,0.03) 40px, rgba(0,0,0,0.03) 41px);
+    font-family: 'IM Fell English', serif;
+    color: var(--ink);
+    min-height: 100vh;
+  }
+
+  /* BANNER SUPERIOR */
+  .banner {
+    background: #0d0903;
+    border-bottom: 4px double var(--gold);
+    padding: 12px 0;
+    text-align: center;
+    letter-spacing: 0.3em;
+    font-family: 'Cinzel', serif;
+    color: var(--gold-light);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+  }
+
+  /* HEADER TIPO LIBRO ILUMINADO */
+  header {
+    background: var(--parchment);
+    background-image: 
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.08'/%3E%3C/svg%3E");
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .header-ornament-top {
+    background: var(--red);
+    height: 8px;
+  }
+
+  .header-inner {
+    padding: 40px 60px 30px;
+    border: 2px solid var(--gold);
+    border-left: none; border-right: none;
+    margin: 15px 30px;
+    position: relative;
+  }
+
+  .header-inner::before, .header-inner::after {
+    content: '✦';
+    position: absolute;
+    color: var(--gold);
+    font-size: 1.5rem;
+    top: 50%; transform: translateY(-50%);
+  }
+  .header-inner::before { left: -15px; }
+  .header-inner::after { right: -15px; }
+
+  .subtitle-lat {
+    text-align: center;
+    font-style: italic;
+    color: var(--red);
+    font-size: 0.85rem;
+    letter-spacing: 0.15em;
+    margin-bottom: 10px;
+    opacity: 0;
+    animation: fadeIn 1s ease 0.3s forwards;
+  }
+
+  h1 {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: clamp(2rem, 5vw, 3.8rem);
+    color: var(--ink);
+    text-align: center;
+    line-height: 1.1;
+    text-shadow: 2px 2px 0 rgba(154,124,46,0.3);
+    opacity: 0;
+    animation: fadeIn 1s ease 0.6s forwards;
+  }
+
+  h1 span {
+    color: var(--red);
+  }
+
+  .header-date {
+    text-align: center;
+    margin-top: 12px;
+    font-family: 'Cinzel', serif;
+    font-size: 0.8rem;
+    color: var(--ink-light);
+    letter-spacing: 0.2em;
+    opacity: 0;
+    animation: fadeIn 1s ease 0.9s forwards;
+  }
+
+  .header-ornament-bot {
+    background: var(--red);
+    height: 8px;
+  }
+
+  /* DECORACIÓN DE VIÑETA */
+  .vignette-divider {
+    text-align: center;
+    padding: 10px;
+    font-size: 1.6rem;
+    color: var(--gold);
+    background: var(--parchment);
+    letter-spacing: 0.5rem;
+  }
+
+  /* MAIN LAYOUT */
+  main {
+    max-width: 1100px;
+    margin: 30px auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 30px;
+  }
+
+  /* PERGAMINO */
+  .parchment-block {
+    background: var(--parchment);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.07'/%3E%3C/svg%3E");
+    border: 1px solid var(--gold);
+    box-shadow: 4px 4px 20px var(--shadow), inset 0 0 30px rgba(154,124,46,0.08);
+    padding: 35px 40px;
+    position: relative;
+    margin-bottom: 30px;
+    opacity: 0;
+    animation: slideUp 0.8s ease forwards;
+  }
+
+  .parchment-block:nth-child(2) { animation-delay: 0.15s; }
+  .parchment-block:nth-child(3) { animation-delay: 0.3s; }
+
+  .parchment-block::before {
+    content: '';
+    position: absolute;
+    top: 5px; left: 5px; right: 5px; bottom: 5px;
+    border: 1px solid rgba(154,124,46,0.3);
+    pointer-events: none;
+  }
+
+  /* LETRINA CAPITAL */
+  .drop-cap::first-letter {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 5rem;
+    float: left;
+    line-height: 0.75;
+    margin: 0 10px -5px 0;
+    color: var(--red);
+    text-shadow: 2px 2px 0 rgba(139,26,26,0.2);
+  }
+
+  /* TÍTULOS DE SECCIÓN */
+  h2 {
+    font-family: 'Cinzel', serif;
+    font-size: 1.3rem;
+    color: var(--red);
+    border-bottom: 2px double var(--gold);
+    padding-bottom: 8px;
+    margin-bottom: 20px;
+    letter-spacing: 0.05em;
+    text-align: center;
+  }
+
+  h3 {
+    font-family: 'Cinzel', serif;
+    font-size: 1rem;
+    color: var(--ink-light);
+    margin: 18px 0 8px;
+  }
+
+  p {
+    line-height: 1.85;
+    font-size: 1rem;
+    color: var(--ink);
+    margin-bottom: 14px;
+    text-align: justify;
+    hyphens: auto;
+  }
+
+  /* CITAS */
+  blockquote {
+    border-left: 4px solid var(--red);
+    padding: 12px 20px;
+    margin: 20px 0;
+    background: rgba(154,124,46,0.07);
+    font-style: italic;
+    font-size: 0.95rem;
+    color: var(--ink-light);
+    position: relative;
+  }
+
+  blockquote::before {
+    content: '❝';
+    font-size: 3rem;
+    color: var(--gold);
+    opacity: 0.4;
+    position: absolute;
+    top: -10px; left: 10px;
+    font-style: normal;
+    line-height: 1;
+  }
+
+  blockquote cite {
+    display: block;
+    margin-top: 8px;
+    font-size: 0.8rem;
+    color: var(--red);
+    font-style: normal;
+    letter-spacing: 0.05em;
+    text-align: right;
+  }
+
+  /* SIDEBAR */
+  aside {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+  }
+
+  .aside-block {
+    background: var(--parchment);
+    border: 1px solid var(--gold);
+    box-shadow: 3px 3px 15px var(--shadow);
+    padding: 25px;
+    position: relative;
+    opacity: 0;
+    animation: slideUp 0.8s ease 0.5s forwards;
+  }
+
+  .aside-block::before {
+    content: '';
+    position: absolute;
+    top: 4px; left: 4px; right: 4px; bottom: 4px;
+    border: 1px solid rgba(154,124,46,0.3);
+    pointer-events: none;
+  }
+
+  /* ESCUDO / EMBLEMA */
+  .emblem {
+    text-align: center;
+    padding: 20px;
+    border: 2px solid var(--gold);
+    border-radius: 0;
+    background: rgba(154,124,46,0.05);
+    margin-bottom: 15px;
+    position: relative;
+    clip-path: polygon(50% 0%, 100% 20%, 100% 80%, 50% 100%, 0% 80%, 0% 20%);
+  }
+
+  .emblem-wrap {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+  }
+
+  .shield {
+    width: 90px;
+    height: 110px;
+    background: linear-gradient(135deg, var(--red) 50%, #5c1111 50%);
+    clip-path: polygon(0 0, 100% 0, 100% 75%, 50% 100%, 0 75%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    filter: drop-shadow(3px 3px 8px rgba(0,0,0,0.5));
+  }
+
+  /* LISTA ESTILO PERGAMINO */
+  .medieval-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .medieval-list li {
+    padding: 6px 0 6px 20px;
+    position: relative;
+    border-bottom: 1px dotted var(--gold);
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .medieval-list li::before {
+    content: '✦';
+    position: absolute;
+    left: 0;
+    color: var(--red);
+    font-size: 0.6rem;
+    top: 10px;
+  }
+
+  /* CRONOLOGÍA */
+  .timeline {
+    position: relative;
+    padding-left: 20px;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--red), var(--gold), var(--red));
+  }
+
+  .timeline-item {
+    margin-bottom: 18px;
+    padding-left: 20px;
+    position: relative;
+  }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -5px;
+    top: 6px;
+    width: 10px; height: 10px;
+    background: var(--red);
+    border: 2px solid var(--gold);
+    transform: rotate(45deg);
+  }
+
+  .timeline-year {
+    font-family: 'Cinzel', serif;
+    font-size: 0.8rem;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+  }
+
+  .timeline-text {
+    font-size: 0.85rem;
+    color: var(--ink);
+    margin-top: 2px;
+    line-height: 1.4;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--parchment-dark);
+    border-top: 4px double var(--gold);
+    text-align: center;
+    padding: 25px;
+    margin-top: 20px;
+  }
+
+  footer p {
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    color: var(--ink-light);
+    text-align: center;
+    margin: 0;
+  }
+
+  /* SCROLL DECORATION */
+  .section-ornament {
+    text-align: center;
+    color: var(--gold);
+    font-size: 1.2rem;
+    margin: 10px 0;
+    letter-spacing: 0.8rem;
+  }
+
+  /* ANIMACIONES */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ===== TOOLTIP IMAGEN ===== */
+  .figura-nombre {
+    position: relative;
+    cursor: default;
+    border-bottom: 1px dotted var(--gold);
+    transition: color 0.2s;
+  }
+  .figura-nombre:hover { color: var(--red); }
+  .figura-tooltip {
+    display: none;
+    position: absolute;
+    left: 110%;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 999;
+    background: var(--parchment);
+    border: 2px double var(--gold);
+    box-shadow: 4px 4px 18px rgba(0,0,0,0.6);
+    padding: 8px;
+    width: 140px;
+    text-align: center;
+    pointer-events: none;
+  }
+  .figura-nombre:hover .figura-tooltip { display: block; animation: fadeIn 0.2s ease; }
+  .figura-tooltip img {
+    width: 124px;
+    height: 155px;
+    object-fit: cover;
+    object-position: top;
+    display: block;
+    border: 1px solid var(--gold);
+    filter: sepia(20%) contrast(1.05);
+  }
+  .figura-tooltip span {
+    display: block;
+    font-family: 'Cinzel', serif;
+    font-size: 0.6rem;
+    color: var(--red);
+    letter-spacing: 0.08em;
+    margin-top: 5px;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    main { grid-template-columns: 1fr; }
+    .parchment-block { padding: 20px; }
+    h1 { font-size: 1.8rem; }
+    .header-inner { padding: 25px 20px; margin: 10px 15px; }
+  }
+
+  /* ===== BOTÓN PERGAMINO ===== */
+  .btn-tesis {
+    display: block;
+    margin: 0 auto 0;
+    width: 100%;
+    font-family: 'Cinzel', serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.15em;
+    color: var(--parchment);
+    background: linear-gradient(135deg, var(--red) 0%, #5c1111 100%);
+    border: 2px solid var(--gold);
+    padding: 12px 32px;
+    cursor: pointer;
+    position: relative;
+    text-transform: uppercase;
+    box-shadow: 3px 3px 12px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.1);
+    transition: all 0.25s;
+    clip-path: polygon(8px 0%, calc(100% - 8px) 0%, 100% 8px, 100% calc(100% - 8px), calc(100% - 8px) 100%, 8px 100%, 0% calc(100% - 8px), 0% 8px);
+    opacity: 0;
+    animation: fadeIn 1s ease 1.2s forwards;
+  }
+  .btn-tesis:hover {
+    background: linear-gradient(135deg, #a02020 0%, #7a1818 100%);
+    box-shadow: 4px 4px 20px rgba(139,26,26,0.6), inset 0 1px 0 rgba(255,255,255,0.15);
+    transform: translateY(-1px);
+  }
+  .btn-tesis::before {
+    content: '📜';
+    margin-right: 10px;
+    font-size: 1rem;
+  }
+
+  /* ===== MODAL OVERLAY ===== */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(5,3,1,0.88);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    backdrop-filter: blur(3px);
+    animation: overlayIn 0.3s ease;
+  }
+  .modal-overlay.open { display: flex; }
+
+  @keyframes overlayIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  /* ===== MODAL CAJA ===== */
+  .modal-box {
+    background: var(--parchment);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.09'/%3E%3C/svg%3E");
+    border: 3px double var(--gold);
+    box-shadow: 0 0 60px rgba(0,0,0,0.8), inset 0 0 40px rgba(154,124,46,0.06);
+    max-width: 780px;
+    width: 100%;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    animation: modalIn 0.4s cubic-bezier(0.22,1,0.36,1);
+  }
+
+  @keyframes modalIn {
+    from { opacity: 0; transform: scale(0.92) translateY(20px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+  }
+
+  .modal-box::before {
+    content: '';
+    position: absolute;
+    inset: 6px;
+    border: 1px solid rgba(154,124,46,0.35);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* CABECERA MODAL */
+  .modal-header {
+    background: var(--red);
+    padding: 18px 25px 14px;
+    text-align: center;
+    position: relative;
+    flex-shrink: 0;
+  }
+
+  .modal-header h2 {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 1.1rem;
+    color: var(--parchment);
+    border: none;
+    margin: 0;
+    letter-spacing: 0.08em;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
+  }
+
+  .modal-header p {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: 0.75rem;
+    color: rgba(242,232,201,0.75);
+    margin: 4px 0 0;
+    text-align: center;
+    line-height: 1.4;
+  }
+
+  .modal-close {
+    position: absolute;
+    top: 12px; right: 15px;
+    background: none;
+    border: 1px solid rgba(242,232,201,0.5);
+    color: var(--parchment);
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    padding: 4px 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .modal-close:hover {
+    background: rgba(242,232,201,0.15);
+    border-color: var(--parchment);
+  }
+
+  /* REPRODUCTOR DE AUDIO */
+  .audio-section {
+    background: linear-gradient(to bottom, rgba(139,26,26,0.06), transparent);
+    border-bottom: 2px double var(--gold);
+    padding: 16px 30px;
+    flex-shrink: 0;
+  }
+
+  .audio-label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    color: var(--red);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+
+  .audio-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  /* Player personalizado */
+  .custom-player {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+    min-width: 220px;
+    background: rgba(26,14,5,0.07);
+    border: 1px solid rgba(154,124,46,0.4);
+    padding: 7px 12px;
+  }
+
+  .play-btn {
+    width: 32px; height: 32px;
+    background: var(--red);
+    border: none;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.9rem;
+    color: var(--parchment);
+    flex-shrink: 0;
+    transition: background 0.2s;
+    clip-path: polygon(4px 0%, calc(100% - 4px) 0%, 100% 4px, 100% calc(100% - 4px), calc(100% - 4px) 100%, 4px 100%, 0% calc(100% - 4px), 0% 4px);
+  }
+  .play-btn:hover { background: #a02020; }
+  .play-btn:disabled { background: #c0a080; cursor: not-allowed; opacity: 0.5; }
+
+  .progress-wrap {
+    flex: 1;
+    position: relative;
+    height: 6px;
+    background: rgba(154,124,46,0.25);
+    cursor: pointer;
+    border: 1px solid rgba(154,124,46,0.3);
+  }
+  .progress-bar {
+    height: 100%;
+    background: linear-gradient(to right, var(--red), var(--gold));
+    width: 0%;
+    transition: width 0.1s linear;
+    pointer-events: none;
+  }
+
+  .time-display {
+    font-family: 'Cinzel', serif;
+    font-size: 0.65rem;
+    color: var(--ink-light);
+    white-space: nowrap;
+    min-width: 70px;
+    text-align: right;
+  }
+
+  .replay-btn {
+    font-family: 'Cinzel', serif;
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    color: var(--parchment);
+    background: linear-gradient(135deg, var(--ink-light) 0%, #1a0e05 100%);
+    border: 1px solid var(--gold);
+    padding: 7px 13px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.2s;
+    flex-shrink: 0;
+    clip-path: polygon(4px 0%, calc(100% - 4px) 0%, 100% 4px, 100% calc(100% - 4px), calc(100% - 4px) 100%, 4px 100%, 0% calc(100% - 4px), 0% 4px);
+  }
+  .replay-btn:hover {
+    background: linear-gradient(135deg, #5c3a1e 0%, #3b2408 100%);
+    box-shadow: 0 0 8px rgba(154,124,46,0.4);
+  }
+
+  /* CUERPO DEL MODAL - TESIS */
+  .modal-body {
+    overflow-y: auto;
+    padding: 25px 35px 30px;
+    flex: 1;
+    scroll-behavior: smooth;
+  }
+
+  .modal-body::-webkit-scrollbar { width: 8px; }
+  .modal-body::-webkit-scrollbar-track { background: var(--parchment-dark); }
+  .modal-body::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 0; }
+
+  .tesis-intro {
+    font-style: italic;
+    text-align: center;
+    font-size: 0.88rem;
+    color: var(--ink-light);
+    margin-bottom: 22px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(154,124,46,0.4);
+    line-height: 1.7;
+  }
+
+  .tesis-grupo {
+    margin-bottom: 22px;
+  }
+
+  .tesis-grupo-titulo {
+    font-family: 'Cinzel', serif;
+    font-size: 0.78rem;
+    color: var(--red);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border-top: 1px double var(--gold);
+    border-bottom: 1px double var(--gold);
+    padding: 5px 0;
+    text-align: center;
+    margin-bottom: 12px;
+  }
+
+  .tesis-item {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 9px;
+    line-height: 1.65;
+    font-size: 0.87rem;
+  }
+
+  .tesis-num {
+    font-family: 'Cinzel', serif;
+    font-size: 0.72rem;
+    color: var(--gold);
+    font-weight: 600;
+    min-width: 26px;
+    text-align: right;
+    margin-top: 2px;
+    flex-shrink: 0;
+  }
+
+  .tesis-text {
+    color: var(--ink);
+    text-align: justify;
+    hyphens: auto;
+  }
+
+  @media (max-width: 600px) {
+    .modal-box { max-height: 95vh; }
+    .modal-body { padding: 15px 18px 20px; }
+    .audio-controls { flex-direction: column; }
+    .custom-player { width: 100%; }
+  }
+</style>
+</head>
+<body>
+
+<div class="banner">⚜ Oriol PIQUERAS PIRIS (el genio) ⚜ Maxime LANGE RODILLA (el alfil) ⚜ Alban JACTAT (el ultimo) ⚜</div>
+
+<header>
+  <div class="header-ornament-top"></div>
+  <div class="header-inner">
+    <p class="subtitle-lat">Renovatio Ecclesiae — Sola Scriptura, Sola Fide, Sola Gratia</p>
+    <h1>La <span>Reforma</span><br>Protestante</h1>
+    <p class="header-date">⚔ Anno Domini MDXVII — MDXCVIII ⚔</p>
+  </div>
+  <div class="vignette-divider">⸻ ✦ ⸻</div>
+  <div class="header-ornament-bot"></div>
+</header>
+
+<main>
+  <!-- COLUMNA PRINCIPAL -->
+  <div>
+
+    <article class="parchment-block">
+      <h2>✦ El Origen de la Reforma ✦</h2>
+      <p class="drop-cap">
+        En el año del Señor de mil quinientos diecisiete, un fraile agustino de nombre Martín Lutero clavó sus noventa y cinco tesis en las puertas de la iglesia del castillo de Wittenberg, en el Sacro Imperio Romano Germánico. Este acto, aparentemente modesto, encendió la llama de una revolución espiritual que sacudiría los cimientos de la Christianitas medieval.
+      </p>
+      <p>
+        La corrupción de la Iglesia de Roma había llegado a tales extremos que la venta de indulgencias —documentos que prometían la remisión de pecados a cambio de moneda de oro— ofendía la conciencia de los hombres piadosos. El monje dominico Johann Tetzel recorría las tierras alemanas proclamando que, por cada moneda que cayera en la caja, un alma ascendería del purgatorio.
+      </p>
+      <blockquote>
+        "Aquí me encuentro, no puedo hacer otra cosa. Que Dios me ayude. Amén."
+        <cite>— Martín Lutero, Dieta de Worms, 1521</cite>
+      </blockquote>
+      <p>
+        La imprenta de Gutenberg, ese instrumento de Dios y del Diablo según dijeron algunos prelados, propagó las ideas de Lutero con una velocidad jamás vista. En cuestión de semanas, las noventa y cinco tesis circulaban por toda Europa como el viento del norte.
+      </p>
+    </article>
+
+    <article class="parchment-block">
+      <h2>✦ Las Doctrinas de la Nueva Fe ✦</h2>
+      <div class="section-ornament">— ✦ —</div>
+
+      <h3>Sola Scriptura</h3>
+      <p>
+        Frente a la autoridad del Papa y los concilios, los reformadores proclamaron que únicamente las Sagradas Escrituras constituyen la regla infalible de fe y práctica. La Biblia, traducida a las lenguas vernáculas, debía ser accesible a todo fiel cristiano, y no patrimonio exclusivo del clero latinizado.
+      </p>
+
+      <h3>Sola Fide</h3>
+      <p>
+        La justificación del hombre ante Dios no se alcanza mediante obras, peregrinaciones ni indulgencias, sino mediante la fe sola. Esta doctrina, redescubierta por Lutero en las epístolas del apóstol San Pablo, constituyó el corazón teológico de la Reforma y la ruptura más profunda con la escolástica medieval.
+      </p>
+
+      <h3>El Sacerdocio Universal</h3>
+      <p>
+        Todo creyente, sea prelado o labrador, es sacerdote ante los ojos del Altísimo. Esta proclama revolucionaria disolvía la jerarquía sagrada que durante siglos había separado al clero del pueblo llano, y otorgaba a cada cristiano responsabilidad directa sobre su alma.
+      </p>
+
+      <blockquote>
+        "La Biblia es la cuna donde yace Cristo."
+        <cite>— Martín Lutero</cite>
+      </blockquote>
+    </article>
+
+    <article class="parchment-block">
+      <h2>✦ Las Guerras de Religión ✦</h2>
+      <p>
+        La ruptura de la Iglesia no fue sólo espiritual: fue de fuego y espada. Las guerras de religión asolaron Europa durante decenios. En Francia, la noche de San Bartolomé del año 1572 tiñó de sangre las calles de París; miles de hugonotes fueron pasados a cuchillo mientras las campanas doblaban. Los príncipes del Imperio se dividieron entre luteranos y papistas, y la Paz de Augsburgo de 1555 consagró el principio de cuius regio, eius religio: el señor de la tierra determina la fe de sus súbditos.
+      </p>
+      <p>
+        Calvino gobernó Ginebra como una ciudad de Dios terrenal; Enrique VIII de Inglaterra se proclamó Cabeza Suprema de la Iglesia Anglicana por motivos tan teológicos como matrimoniales. La Reforma no fue un movimiento uniforme, sino un huracán que sopló en mil direcciones distintas.
+      </p>
+    </article>
+
+  </div>
+
+  <!-- COLUMNA LATERAL -->
+  <aside>
+
+    <div class="aside-block">
+      <h2>Figuras</h2>
+      <ul class="medieval-list">
+        <li><strong class="figura-nombre">Martín Lutero
+          <div class="figura-tooltip"><img src="lutero.jpg" alt="Martín Lutero"><span>Martín Lutero</span></div>
+        </strong> — Wittenberg, 1483–1546</li>
+        <li><strong class="figura-nombre">Juan Calvino
+          <div class="figura-tooltip"><img src="calvino.jpg" alt="Juan Calvino"><span>Juan Calvino</span></div>
+        </strong> — Ginebra, 1509–1564</li>
+        <li><strong class="figura-nombre">Ulrico Zwinglio
+          <div class="figura-tooltip"><img src="zwinglio.jpg" alt="Ulrico Zwinglio"><span>Ulrico Zwinglio</span></div>
+        </strong> — Zúrich, 1484–1531</li>
+        <li><strong class="figura-nombre">Enrique VIII
+          <div class="figura-tooltip"><img src="enrique8.jpg" alt="Enrique VIII"><span>Enrique VIII</span></div>
+        </strong> — Inglaterra, 1491–1547</li>
+        <li><strong class="figura-nombre">Felipe Melanchthon
+          <div class="figura-tooltip"><img src="melanchthon.jpg" alt="Felipe Melanchthon"><span>Felipe Melanchthon</span></div>
+        </strong> — 1497–1560</li>
+        <li><strong class="figura-nombre">Juan Knox
+          <div class="figura-tooltip"><img src="knox.jpg" alt="Juan Knox"><span>Juan Knox</span></div>
+        </strong> — Escocia, 1514–1572</li>
+        <li><strong class="figura-nombre">Erasmo de Róterdam
+          <div class="figura-tooltip"><img src="erasmo.jpg" alt="Erasmo de Róterdam"><span>Erasmo de Róterdam</span></div>
+        </strong> — 1466–1536</li>
+      </ul>
+    </div>
+
+    <div class="aside-block">
+      <h2>Cronología</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-year">1517</div>
+          <div class="timeline-text">Lutero clava las 95 Tesis en Wittenberg</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">1521</div>
+          <div class="timeline-text">Dieta de Worms; Lutero excomulgado</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">1525</div>
+          <div class="timeline-text">Guerra de los Campesinos en Alemania</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">1534</div>
+          <div class="timeline-text">Acta de Supremacía en Inglaterra</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">1541</div>
+          <div class="timeline-text">Calvino establece la teocracia en Ginebra</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">1545</div>
+          <div class="timeline-text">Inicio del Concilio de Trento</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">1555</div>
+          <div class="timeline-text">Paz de Augsburgo</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">1572</div>
+          <div class="timeline-text">Noche de San Bartolomé en Francia</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">1598</div>
+          <div class="timeline-text">Edicto de Nantes — tolerancia religiosa</div>
+        </div>
+      </div>
+    </div>
+
+    <button class="btn-tesis" onclick="abrirTesis()">
+      Leer las 95 Tesis de Wittenberg
+    </button>
+
+    <div class="aside-block">
+      <div class="emblem-wrap">
+        <div class="shield">✝</div>
+      </div>
+      <h2>La Contrarreforma</h2>
+      <p style="font-size:0.88rem; line-height:1.7;">
+        Roma respondió con el Concilio de Trento (1545–1563), la fundación de la Compañía de Jesús por San Ignacio de Loyola, y la renovación de la Inquisición. El barroco fue el arte de la Iglesia Católica triunfante, el esplendor contra la austeridad protestante.
+      </p>
+    </div>
+
+    <div class="aside-block">
+      <h2>Legado</h2>
+      <ul class="medieval-list">
+        <li>Surgimiento del protestantismo en sus múltiples ramas</li>
+        <li>Expansión de la alfabetización y la imprenta</li>
+        <li>Traducción de la Biblia a lenguas vernáculas</li>
+        <li>Desarrollo del Estado moderno laico</li>
+        <li>Fundamentos del capitalismo (Max Weber)</li>
+        <li>Crisis de la autoridad papal en Occidente</li>
+      </ul>
+    </div>
+
+  </aside>
+</main>
+
+<footer>
+  <p>✦ Scriptum Anno Domini MMXXVI · Omnia Ad Maiorem Dei Gloriam ✦</p>
+  <p style="margin-top:8px; font-size:0.6rem; opacity:0.6;">In Nomine Patris et Filii et Spiritus Sancti</p>
+</footer>
+
+<!-- ========== MODAL 95 TESIS ========== -->
+<div class="modal-overlay" id="modalTesis" onclick="cerrarTesisFuera(event)">
+  <div class="modal-box" role="dialog" aria-modal="true" aria-label="Las 95 Tesis de Martín Lutero">
+
+    <div class="modal-header">
+      <button class="modal-close" onclick="cerrarTesis()" aria-label="Cerrar">✕ Cerrar</button>
+      <h2>Las 95 Tesis</h2>
+      <p>Martín Lutero · Wittenberg, 31 de octubre de 1517<br>
+      <em>Disputatio pro Declaratione Virtutis Indulgentiarum</em></p>
+    </div>
+
+    <!-- REPRODUCTOR DE AUDIO -->
+    <div class="audio-section">
+      <div class="audio-label">⚜ Lectura en voz ⚜</div>
+      <div class="audio-controls">
+        <div class="custom-player" id="playerWrap">
+          <button class="play-btn" id="playBtn" onclick="togglePlay()">▶</button>
+          <div class="progress-wrap" id="progressWrap" onclick="saltarAudio(event)">
+            <div class="progress-bar" id="progressBar"></div>
+          </div>
+          <span class="time-display" id="timeDisplay">0:00 / 0:00</span>
+          <button class="replay-btn" onclick="reiniciarAudio()">↺ Reiniciar</button>
+        </div>
+      </div>
+      <audio id="audioPlayer" onended="resetPlayer()" ontimeupdate="actualizarProgreso()"></audio>
+    </div>
+
+    <!-- TEXTO DE LAS 95 TESIS -->
+    <div class="modal-body">
+      <p class="tesis-intro">
+En 1517, Lutero declinó un movimiento de reforma al declarar ses 95 tesis contre les indulgencias.<br>
+En las primeras tesis, Lutero desarrolló la idea del arrepentimiento como la lucha interna del cristiano contra el pecado en lugar del sistema externo de la confesión sacramental.
+      </p>
+
+      <div class="tesis-grupo">
+        <div class="tesis-grupo-titulo">— I. De la Penitencia y el Poder del Papa —</div>
+        <div class="tesis-item"><span class="tesis-num">1</span><span class="tesis-text">Cuando nuestro Señor y Maestro Jesucristo dijo: «Haced penitencia», quiso que toda la vida de los creyentes fuera penitencia.</span></div>
+        <div class="tesis-item"><span class="tesis-num">2</span><span class="tesis-text">Esta palabra no puede entenderse como referida al sacramento de la penitencia, es decir, a la confesión y satisfacción administrada por el ministerio de los sacerdotes.</span></div>
+        <div class="tesis-item"><span class="tesis-num">3</span><span class="tesis-text">No se refiere sólo a la penitencia interior; la interior es nula si no produce exteriormente toda clase de mortificaciones de la carne.</span></div>
+        <div class="tesis-item"><span class="tesis-num">4</span><span class="tesis-text">El castigo subsiste, pues, mientras subsiste el odio a sí mismo, es decir, la verdadera penitencia interior, hasta la entrada en el reino de los cielos.</span></div>
+        <div class="tesis-item"><span class="tesis-num">5</span><span class="tesis-text">El Papa no quiere ni puede remitir culpa alguna, excepto la que él haya impuesto por su arbitrio o por el de los cánones.</span></div>
+        <div class="tesis-item"><span class="tesis-num">6</span><span class="tesis-text">El Papa no puede remitir culpa alguna, sino sólo declarar y confirmar el perdón de Dios; a lo sumo puede perdonar en los casos que se haya reservado a sí mismo. Si los desprecia, la culpa permanece.</span></div>
+        <div class="tesis-item"><span class="tesis-num">7</span><span class="tesis-text">Dios no perdona la culpa de ninguno a quien al mismo tiempo no le someta, humillado en todo, a su representante el sacerdote.</span></div>
+        <div class="tesis-item"><span class="tesis-num">8</span><span class="tesis-text">Los cánones penitenciales han sido impuestos sólo a los vivos y de acuerdo con ellos no debe imponerse carga alguna a los moribundos.</span></div>
+        <div class="tesis-item"><span class="tesis-num">9</span><span class="tesis-text">De donde resulta que el Espíritu Santo actúa bien en el Papa al exceptuar siempre en sus decretos el artículo de la muerte y el de la necesidad.</span></div>
+        <div class="tesis-item"><span class="tesis-num">10</span><span class="tesis-text">Obran neciamente e impíamente los sacerdotes que reservan para el purgatorio la penitencia canónica de los moribundos.</span></div>
+      </div>
+
+      <div class="tesis-grupo">
+        <div class="tesis-grupo-titulo">— II. De las Indulgencias y el Purgatorio —</div>
+        <div class="tesis-item"><span class="tesis-num">11</span><span class="tesis-text">Esta cizaña de cambiar la pena canónica en pena de purgatorio parece, ciertamente, que fue sembrada mientras los obispos dormían.</span></div>
+        <div class="tesis-item"><span class="tesis-num">12</span><span class="tesis-text">Antiguamente, las penas canónicas eran impuestas no después, sino antes de la absolución, como ensayo de la verdadera contrición.</span></div>
+        <div class="tesis-item"><span class="tesis-num">13</span><span class="tesis-text">Los moribundos pagan con la muerte todas las penas y ya están muertos a los cánones y tienen derecho a ser liberados de ellos.</span></div>
+        <div class="tesis-item"><span class="tesis-num">14</span><span class="tesis-text">La salud o caridad imperfecta del moribundo trae necesariamente consigo un gran temor; tanto mayor cuanto menor sea aquella caridad.</span></div>
+        <div class="tesis-item"><span class="tesis-num">15</span><span class="tesis-text">Este temor y horror es suficiente por sí solo —por no hablar de otras cosas— para constituir la pena del purgatorio, por estar muy cerca del horror de la desesperación.</span></div>
+        <div class="tesis-item"><span class="tesis-num">16</span><span class="tesis-text">El infierno, el purgatorio y el cielo parecen diferenciarse entre sí como la desesperación, la cuasi-desesperación y la seguridad de la salvación.</span></div>
+        <div class="tesis-item"><span class="tesis-num">17</span><span class="tesis-text">Parece necesario para las almas del purgatorio que el horror vaya disminuyendo, y que aumente la caridad.</span></div>
+        <div class="tesis-item"><span class="tesis-num">18</span><span class="tesis-text">No parece demostrado con razón alguna, ya sea por la escritura o por los antiguos teólogos, que estén fuera del estado de mérito o del aumento de la caridad.</span></div>
+        <div class="tesis-item"><span class="tesis-num">19</span><span class="tesis-text">Tampoco parece demostrado que estén todas en estado de bienaventuranza segura y cierta, a lo menos todas ellas.</span></div>
+        <div class="tesis-item"><span class="tesis-num">20</span><span class="tesis-text">Por lo tanto, el Papa, cuando habla de remisión plenaria de todas las penas, no entiende simplemente de todas ellas, sino solamente de las por él impuestas.</span></div>
+      </div>
+
+      <div class="tesis-grupo">
+        <div class="tesis-grupo-titulo">— III. Del Poder del Papa sobre las Almas —</div>
+        <div class="tesis-item"><span class="tesis-num">21</span><span class="tesis-text">Por lo tanto, yerran los predicadores de indulgencias que dicen que el hombre queda libre de toda pena y salvo por las indulgencias del Papa.</span></div>
+        <div class="tesis-item"><span class="tesis-num">22</span><span class="tesis-text">Y que no remite alma alguna del purgatorio la pena que según los cánones debía pagar en esta vida.</span></div>
+        <div class="tesis-item"><span class="tesis-num">23</span><span class="tesis-text">Si a alguno se le puede conceder alguna remisión de todas las penas, es cierto que se concede a los más perfectos, es decir, a muy pocos.</span></div>
+        <div class="tesis-item"><span class="tesis-num">24</span><span class="tesis-text">De donde se sigue que la mayor parte del pueblo es engañado con esa promesa indiscriminada y jactanciosa de la liberación de la pena.</span></div>
+        <div class="tesis-item"><span class="tesis-num">25</span><span class="tesis-text">El poder que el Papa tiene sobre el purgatorio en general, cualquier obispo y cualquier cura lo tiene en particular en su diócesis y en su parroquia.</span></div>
+        <div class="tesis-item"><span class="tesis-num">26</span><span class="tesis-text">Obra perfectamente el Papa al dar la remisión a las almas del purgatorio, no por la potestad de las llaves —que no tiene sobre ellas— sino por la vía de la intercesión.</span></div>
+        <div class="tesis-item"><span class="tesis-num">27</span><span class="tesis-text">Enseñan una doctrina humana quienes afirman que el alma vuela del purgatorio tan pronto suena la moneda que cae en la caja.</span></div>
+        <div class="tesis-item"><span class="tesis-num">28</span><span class="tesis-text">Es cierto que cuando la moneda suena al caer en la caja, el lucro y la avaricia pueden aumentar, pero la intercesión de la Iglesia depende sólo de la voluntad de Dios.</span></div>
+        <div class="tesis-item"><span class="tesis-num">29</span><span class="tesis-text">¿Quién sabe si todas las almas del purgatorio desean ser liberadas de él, como cuentan que sucedió con San Severino y San Pascual?</span></div>
+        <div class="tesis-item"><span class="tesis-num">30</span><span class="tesis-text">Nadie tiene seguridad de que su contrición sea sincera; mucho menos puede tener seguridad de haber alcanzado la indulgencia plenaria.</span></div>
+      </div>
+
+      <div class="tesis-grupo">
+        <div class="tesis-grupo-titulo">— IV. De los Tesoros de la Iglesia —</div>
+        <div class="tesis-item"><span class="tesis-num">31</span><span class="tesis-text">El que compra verdadera indulgencia es tan raro como el que con sinceridad hace penitencia, es decir, rarísimo.</span></div>
+        <div class="tesis-item"><span class="tesis-num">32</span><span class="tesis-text">Serán condenados eternamente junto con sus maestros los que creen que por las cartas de indulgencias tienen asegurada su salvación.</span></div>
+        <div class="tesis-item"><span class="tesis-num">33</span><span class="tesis-text">Hay que guardarse mucho de los que dicen que las indulgencias del Papa son el inestimable don de Dios por el que el hombre se reconcilia con Él.</span></div>
+        <div class="tesis-item"><span class="tesis-num">34</span><span class="tesis-text">Pues las gracias de esas indulgencias se refieren sólo a las penas de la satisfacción sacramental establecidas por los hombres.</span></div>
+        <div class="tesis-item"><span class="tesis-num">35</span><span class="tesis-text">No predican la doctrina cristiana los que enseñan que no es necesaria la contrición para los que sacan de la cautividad o compran confesionales.</span></div>
+        <div class="tesis-item"><span class="tesis-num">36</span><span class="tesis-text">Todo cristiano que sienta verdadera contrición tiene la remisión plenaria de la pena y de la culpa que le es debida, incluso sin carta de indulgencia.</span></div>
+        <div class="tesis-item"><span class="tesis-num">37</span><span class="tesis-text">Todo verdadero cristiano, sea vivo o muerto, participa de todos los bienes de Cristo y de la Iglesia, dada por Dios, aun sin cartas de indulgencias.</span></div>
+        <div class="tesis-item"><span class="tesis-num">38</span><span class="tesis-text">Sin embargo, la remisión y la participación otorgadas por el Papa no deben menospreciarse, porque son, como ya dije, la declaración del perdón divino.</span></div>
+        <div class="tesis-item"><span class="tesis-num">39</span><span class="tesis-text">Es sumamente difícil, aun para los teólogos más doctos, poder ensalzar al mismo tiempo la munificencia de las indulgencias y la verdad de la contrición.</span></div>
+        <div class="tesis-item"><span class="tesis-num">40</span><span class="tesis-text">La verdadera contrición ama y busca la pena; la largueza de las indulgencias la absuelve y hace odiarla, por lo menos con ocasión.</span></div>
+      </div>
+
+      <div class="tesis-grupo">
+        <div class="tesis-grupo-titulo">— V. De la Avaricia y los Predicadores —</div>
+        <div class="tesis-item"><span class="tesis-num">41</span><span class="tesis-text">Hay que predicar con prudencia las indulgencias apostólicas, para que el pueblo no entienda falsamente que son preferibles a otras buenas obras de caridad.</span></div>
+        <div class="tesis-item"><span class="tesis-num">42</span><span class="tesis-text">Hay que enseñar a los cristianos que el Papa no piensa en absoluto que la compra de indulgencias sea comparable a las obras de misericordia.</span></div>
+        <div class="tesis-item"><span class="tesis-num">43</span><span class="tesis-text">Hay que enseñar a los cristianos que el que da al pobre o presta al necesitado hace mejor obra que el que compra indulgencias.</span></div>
+        <div class="tesis-item"><span class="tesis-num">44</span><span class="tesis-text">Pues con la obra de caridad crece la caridad y el hombre se hace mejor; mientras que con las indulgencias no se hace mejor, sino que sólo se libra de la pena.</span></div>
+        <div class="tesis-item"><span class="tesis-num">45</span><span class="tesis-text">Hay que enseñar a los cristianos que el que ve a un necesitado y, sin tenerlo en cuenta, da su dinero para las indulgencias, no alcanza las indulgencias del Papa sino la indignación de Dios.</span></div>
+        <div class="tesis-item"><span class="tesis-num">46</span><span class="tesis-text">Hay que enseñar a los cristianos que, si no abundan en lo superfluo, están obligados a reservar lo necesario para sus casas y no derrochar en indulgencias.</span></div>
+        <div class="tesis-item"><span class="tesis-num">47</span><span class="tesis-text">Hay que enseñar a los cristianos que la compra de indulgencias es voluntaria y no preceptiva.</span></div>
+        <div class="tesis-item"><span class="tesis-num">48</span><span class="tesis-text">Hay que enseñar a los cristianos que el Papa, al conceder indulgencias, tiene más necesidad y más deseos de que se ore devotamente por él que no de que el dinero esté disponible.</span></div>
+        <div class="tesis-item"><span class="tesis-num">49</span><span class="tesis-text">Hay que enseñar a los cristianos que las indulgencias papales son útiles si no ponen en ellas su confianza, pero que son muy perjudiciales si por ellas pierden el temor de Dios.</span></div>
+        <div class="tesis-item"><span class="tesis-num">50</span><span class="tesis-text">Hay que enseñar a los cristianos que si el Papa conociese los abusos de los predicadores de indulgencias, preferiría que la basílica de San Pedro se redujera a cenizas antes de que fuera construida con la piel, la carne y los huesos de sus ovejas.</span></div>
+      </div>
+
+      <div class="tesis-grupo">
+        <div class="tesis-grupo-titulo">— VI. De San Pedro y la Codicia —</div>
+        <div class="tesis-item"><span class="tesis-num">51</span><span class="tesis-text">Hay que enseñar a los cristianos que el Papa, como es su deber, querría dar de su propio dinero a muchos de aquellos a quienes ciertos predicadores de indulgencias arrasan el dinero, aunque para ello tuviese que vender, si fuera necesario, la basílica de San Pedro.</span></div>
+        <div class="tesis-item"><span class="tesis-num">52</span><span class="tesis-text">Es vana la esperanza de conseguir la salvación por medio de cartas de indulgencias, aunque el comisario, es más, el Papa mismo, ofreciese su propia alma como garantía.</span></div>
+        <div class="tesis-item"><span class="tesis-num">53</span><span class="tesis-text">Son enemigos de Cristo y del Papa los que, por predicar indulgencias, mandan que la palabra de Dios calle por completo en otras iglesias.</span></div>
+        <div class="tesis-item"><span class="tesis-num">54</span><span class="tesis-text">Se hace injuria a la palabra de Dios cuando en un mismo sermón se gasta tanto tiempo o más en las indulgencias que en aquella.</span></div>
+        <div class="tesis-item"><span class="tesis-num">55</span><span class="tesis-text">El pensamiento del Papa es necesariamente éste: si las indulgencias —que son algo mínimo— se celebran con una campana, una procesión y una ceremonia, el Evangelio —que es lo máximo— debe predicarse con cien campanas, cien procesiones y cien ceremonias.</span></div>
+        <div class="tesis-item"><span class="tesis-num">56</span><span class="tesis-text">Los tesoros de la Iglesia, de donde el Papa concede las indulgencias, no son suficientemente tratados ni conocidos por el pueblo cristiano.</span></div>
+        <div class="tesis-item"><span class="tesis-num">57</span><span class="tesis-text">Es evidente que no son temporales, pues muchos de los predicadores no los prodigan tan fácilmente, sino que los acumulan.</span></div>
+        <div class="tesis-item"><span class="tesis-num">58</span><span class="tesis-text">Tampoco son los méritos de Cristo y de los santos, porque éstos, sin la intervención del Papa, obran siempre la gracia del hombre interior y la cruz, la muerte y el infierno del hombre exterior.</span></div>
+        <div class="tesis-item"><span class="tesis-num">59</span><span class="tesis-text">San Lorenzo dijo que los pobres de la Iglesia eran los tesoros de la Iglesia, pero habló según el uso de la palabra en su tiempo.</span></div>
+        <div class="tesis-item"><span class="tesis-num">60</span><span class="tesis-text">No hablamos temerariamente al decir que las llaves de la Iglesia —donadas por el mérito de Cristo— son ese tesoro.</span></div>
+      </div>
+
+      <div class="tesis-grupo">
+        <div class="tesis-grupo-titulo">— VII. Del Evangelio y el Verdadero Tesoro —</div>
+        <div class="tesis-item"><span class="tesis-num">61</span><span class="tesis-text">Está claro que el poder del Papa es suficiente por sí solo para la remisión de las penas y de los casos reservados.</span></div>
+        <div class="tesis-item"><span class="tesis-num">62</span><span class="tesis-text">El verdadero tesoro de la Iglesia es el sacrosanto Evangelio de la gloria y de la gracia de Dios.</span></div>
+        <div class="tesis-item"><span class="tesis-num">63</span><span class="tesis-text">Pero este tesoro es, con razón, muy odiado, porque hace que los primeros sean los últimos.</span></div>
+        <div class="tesis-item"><span class="tesis-num">64</span><span class="tesis-text">El tesoro de las indulgencias es, con razón, muy grato, porque hace que los últimos sean los primeros.</span></div>
+        <div class="tesis-item"><span class="tesis-num">65</span><span class="tesis-text">Los tesoros del Evangelio son redes con que se pescaban antiguamente hombres ricos.</span></div>
+        <div class="tesis-item"><span class="tesis-num">66</span><span class="tesis-text">Los tesoros de las indulgencias son redes con las que ahora se pescan las riquezas de los hombres.</span></div>
+        <div class="tesis-item"><span class="tesis-num">67</span><span class="tesis-text">Las indulgencias que los predicadores pregonan como las mayores gracias son, en realidad, tales en cuanto producen ganancia.</span></div>
+        <div class="tesis-item"><span class="tesis-num">68</span><span class="tesis-text">Sin embargo, en realidad son las menores gracias si se las compara con la gracia de Dios y la piedad de la Cruz.</span></div>
+        <div class="tesis-item"><span class="tesis-num">69</span><span class="tesis-text">Los obispos y curas están obligados a admitir con toda reverencia a los comisarios de las indulgencias apostólicas.</span></div>
+        <div class="tesis-item"><span class="tesis-num">70</span><span class="tesis-text">Pero están más obligados a mirar con todos sus ojos, a escuchar con todos sus oídos, para que estos hombres no prediquen sus propias fantasías en lugar de la comisión del Papa.</span></div>
+      </div>
+
+      <div class="tesis-grupo">
+        <div class="tesis-grupo-titulo">— VIII. De las Preguntas del Pueblo —</div>
+        <div class="tesis-item"><span class="tesis-num">71</span><span class="tesis-text">El que habla contra la verdad de las indulgencias apostólicas sea anatema y maldito.</span></div>
+        <div class="tesis-item"><span class="tesis-num">72</span><span class="tesis-text">Pero el que se preocupa para que los predicadores de indulgencias hablen lujuriosamente y con atrevimiento contra la debida reverencia, sea bendito.</span></div>
+        <div class="tesis-item"><span class="tesis-num">73</span><span class="tesis-text">Así como el Papa justamente fulmina a los que con cualquier ardid fraudulento dañan el tráfico de las indulgencias.</span></div>
+        <div class="tesis-item"><span class="tesis-num">74</span><span class="tesis-text">Cuanto más quiere fulminar a los que, con el pretexto de las indulgencias, usan artificios en perjuicio de la santa caridad y de la verdad.</span></div>
+        <div class="tesis-item"><span class="tesis-num">75</span><span class="tesis-text">Pensar que las indulgencias papales pueden absolver al hombre aun cuando —si fuera posible imaginarlo— hubiera violado a la madre de Dios, es una locura.</span></div>
+        <div class="tesis-item"><span class="tesis-num">76</span><span class="tesis-text">Decimos, por el contrario, que las indulgencias papales no pueden quitar el más mínimo pecado venial en cuanto a la culpa.</span></div>
+        <div class="tesis-item"><span class="tesis-num">77</span><span class="tesis-text">Decir que ni San Pedro, si fuera Papa, podría conceder gracias mayores, es una blasfemia contra San Pedro y el Papa.</span></div>
+        <div class="tesis-item"><span class="tesis-num">78</span><span class="tesis-text">Decimos, por el contrario, que el Papa actual y cualquier Papa tiene mayores gracias a su disposición, es decir: el Evangelio, los poderes espirituales, los dones de curación, etc., como está escrito en el capítulo XII.</span></div>
+        <div class="tesis-item"><span class="tesis-num">79</span><span class="tesis-text">Decir que la cruz ornada con las armas papales, colocada solemnemente, equivale a la Cruz de Cristo, es una blasfemia.</span></div>
+        <div class="tesis-item"><span class="tesis-num">80</span><span class="tesis-text">Los obispos, los curas y los teólogos que permiten que tales cosas se prediquen al pueblo, tendrán que dar cuenta de ello.</span></div>
+      </div>
+
+      <div class="tesis-grupo">
+        <div class="tesis-grupo-titulo">— IX. Preguntas Acusadoras del Pueblo —</div>
+        <div class="tesis-item"><span class="tesis-num">81</span><span class="tesis-text">Esta predicación atrevida de las indulgencias hace difícil que hombres doctos defiendan el respeto que se debe al Papa frente a las calumnias y preguntas perspicaces de los laicos.</span></div>
+        <div class="tesis-item"><span class="tesis-num">82</span><span class="tesis-text">¿Por qué el Papa no vacía el purgatorio por amor a la santísima caridad y por la acuciante necesidad de las almas —que sería la razón más justa—, ya que libera infinitas almas por dinero —razón fungible para la construcción de la basílica— que es la más banal de las razones?</span></div>
+        <div class="tesis-item"><span class="tesis-num">83</span><span class="tesis-text">¿Por qué se continúan celebrando exequias y aniversarios por los difuntos y por qué no devuelve o permite que sean recibidas de nuevo las fundaciones instituidas para ellos, puesto que ya no es justo orar por los redimidos?</span></div>
+        <div class="tesis-item"><span class="tesis-num">84</span><span class="tesis-text">¿Qué clase de piedad es ésa de Dios y del Papa que permiten que el hombre impío y enemigo de Dios rescate por dinero un alma piadosa y amiga de Dios, pero que no rescaten esa misma alma piadosa y amorosa por libre amor a ella misma y por acuciante necesidad?</span></div>
+        <div class="tesis-item"><span class="tesis-num">85</span><span class="tesis-text">¿Por qué los cánones de la penitencia —abrogados desde hace tiempo en la práctica y muertos de hecho— se satisfacen todavía, sin embargo, con el dinero de las indulgencias, como si estuviesen completamente en vigor?</span></div>
+        <div class="tesis-item"><span class="tesis-num">86</span><span class="tesis-text">¿Por qué el Papa, cuya riqueza es hoy mayor que la de los más ricos Cresos, no edifica sólo con su propio dinero la basílica de San Pedro, y no más bien con el dinero de los pobres creyentes?</span></div>
+        <div class="tesis-item"><span class="tesis-num">87</span><span class="tesis-text">¿Qué remite el Papa o qué participación otorga el Papa a los que, por medio de perfecta contrición, tienen derecho a la remisión y participación plenarias?</span></div>
+        <div class="tesis-item"><span class="tesis-num">88</span><span class="tesis-text">¿Qué bien mayor podría hacerse a la Iglesia si el Papa, como lo hace una vez, concediese estas remisiones y participaciones a cada fiel cien veces al día?</span></div>
+        <div class="tesis-item"><span class="tesis-num">89</span><span class="tesis-text">Si el Papa busca con las indulgencias la salvación de las almas más que el dinero, ¿por qué suspende las cartas e indulgencias concedidas anteriormente siendo éstas igualmente eficaces?</span></div>
+        <div class="tesis-item"><span class="tesis-num">90</span><span class="tesis-text">Reprimir estos argumentos muy agudos de los laicos apelando solamente a la fuerza y no con argumentos racionales, es exponerse a la burla de los enemigos y hacer miserables a los cristianos.</span></div>
+      </div>
+
+      <div class="tesis-grupo">
+        <div class="tesis-grupo-titulo">— X. De la Cruz y la Verdadera Salvación —</div>
+        <div class="tesis-item"><span class="tesis-num">91</span><span class="tesis-text">Si, pues, las indulgencias se predicasen según el espíritu e intención del Papa, todas esas dificultades se resolverían fácilmente, más aún, no existirían.</span></div>
+        <div class="tesis-item"><span class="tesis-num">92</span><span class="tesis-text">¡Fuera, pues, todos los profetas que dicen al pueblo de Cristo: "Paz, paz", y no hay paz!</span></div>
+        <div class="tesis-item"><span class="tesis-num">93</span><span class="tesis-text">¡Bien vengan todos los profetas que dicen al pueblo de Cristo: "Cruz, cruz", y no hay cruz!</span></div>
+        <div class="tesis-item"><span class="tesis-num">94</span><span class="tesis-text">Hay que exhortar a los cristianos a que pongan empeño en seguir a Cristo, su cabeza, a través de la pena, de la muerte y del infierno.</span></div>
+        <div class="tesis-item"><span class="tesis-num">95</span><span class="tesis-text">Y así confiar en entrar al cielo a través de muchas tribulaciones, antes que por la seguridad de la paz.</span></div>
+      </div>
+
+      <p class="tesis-intro" style="margin-top:10px;">
+        ✦ Finis · Conclusio Disputationis · Wittenberg, Anno Domini MDXVII ✦
+      </p>
+    </div><!-- fin modal-body -->
+  </div><!-- fin modal-box -->
+</div><!-- fin modal-overlay -->
+
+<script>
+  // ===== MODAL =====
+  function abrirTesis() {
+    document.getElementById('modalTesis').classList.add('open');
+    document.body.style.overflow = 'hidden';
+    // Lanzar audio automáticamente al abrir
+    if (!audio.src || audio.src === window.location.href) {
+      audio.src = 'audio_1.mp3';
+      audio.load();
+    }
+    audio.play().then(() => {
+      playBtn.textContent = '⏸';
+    }).catch(() => {});
+  }
+  function cerrarTesis() {
+    document.getElementById('modalTesis').classList.remove('open');
+    document.body.style.overflow = '';
+    pausarAudio();
+  }
+  function cerrarTesisFuera(e) {
+    if (e.target === document.getElementById('modalTesis')) cerrarTesis();
+  }
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') cerrarTesis(); });
+
+  // ===== AUDIO =====
+  const audio = document.getElementById('audioPlayer');
+  const playBtn = document.getElementById('playBtn');
+  const progressBar = document.getElementById('progressBar');
+  const timeDisplay = document.getElementById('timeDisplay');
+
+  function togglePlay() {
+    if (audio.paused) {
+      audio.play();
+      playBtn.textContent = '⏸';
+    } else {
+      audio.pause();
+      playBtn.textContent = '▶';
+    }
+  }
+
+  function pausarAudio() {
+    if (!audio.paused) {
+      audio.pause();
+      playBtn.textContent = '▶';
+    }
+  }
+
+  function reiniciarAudio() {
+    audio.currentTime = 0;
+    audio.play();
+    playBtn.textContent = '⏸';
+  }
+
+  function resetPlayer() {
+    playBtn.textContent = '▶';
+    progressBar.style.width = '0%';
+    timeDisplay.textContent = '0:00 / ' + formatTime(audio.duration);
+  }
+
+  function actualizarProgreso() {
+    if (!audio.duration) return;
+    const pct = (audio.currentTime / audio.duration) * 100;
+    progressBar.style.width = pct + '%';
+    timeDisplay.textContent = formatTime(audio.currentTime) + ' / ' + formatTime(audio.duration);
+  }
+
+  function saltarAudio(e) {
+    if (!audio.duration) return;
+    const rect = e.currentTarget.getBoundingClientRect();
+    const ratio = (e.clientX - rect.left) / rect.width;
+    audio.currentTime = ratio * audio.duration;
+  }
+
+  function formatTime(s) {
+    if (!s || isNaN(s)) return '0:00';
+    const m = Math.floor(s / 60);
+    const sec = Math.floor(s % 60).toString().padStart(2, '0');
+    return m + ':' + sec;
+  }
+</script>
+</body>
+</html>
