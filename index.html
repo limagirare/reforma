@@ -3,8 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>La Reforma Protestante — oriol/alban/max</title>
-<!--v1.2.1-->
+<title>La Reforma Protestante — Crónica de los Siglos XVI</title>
 <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&family=IM+Fell+English:ital@0;1&family=Cinzel+Decorative:wght@400;700&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -56,6 +55,7 @@
   .header-ornament-top {
     background: var(--red);
     height: 8px;
+    animation: slideInLeft 0.8s ease both;
   }
 
   .header-inner {
@@ -72,6 +72,7 @@
     color: var(--gold);
     font-size: 1.5rem;
     top: 50%; transform: translateY(-50%);
+    animation: ornamentSpin 8s linear infinite;
   }
   .header-inner::before { left: -15px; }
   .header-inner::after { right: -15px; }
@@ -93,9 +94,8 @@
     color: var(--ink);
     text-align: center;
     line-height: 1.1;
-    text-shadow: 2px 2px 0 rgba(154,124,46,0.3);
     opacity: 0;
-    animation: fadeIn 1s ease 0.6s forwards;
+    animation: fadeIn 1s ease 0.6s forwards, flameFlicker 4s ease-in-out 1.6s infinite;
   }
 
   h1 span {
@@ -116,6 +116,7 @@
   .header-ornament-bot {
     background: var(--red);
     height: 8px;
+    animation: slideInRight 0.8s ease 0.2s both;
   }
 
   /* DECORACIÓN DE VIÑETA */
@@ -126,6 +127,7 @@
     color: var(--gold);
     background: var(--parchment);
     letter-spacing: 0.5rem;
+    animation: vignetteShimmer 3s ease-in-out infinite;
   }
 
   /* MAIN LAYOUT */
@@ -148,7 +150,12 @@
     position: relative;
     margin-bottom: 30px;
     opacity: 0;
-    animation: slideUp 0.8s ease forwards;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: slideUp 0.8s ease forwards, candleGlow 5s ease-in-out 1s infinite;
+  }
+  .parchment-block:hover {
+    transform: translateY(-3px);
+    box-shadow: 6px 8px 30px var(--shadow), inset 0 0 40px rgba(154,124,46,0.15);
   }
 
   .parchment-block:nth-child(2) { animation-delay: 0.15s; }
@@ -183,6 +190,7 @@
     margin-bottom: 20px;
     letter-spacing: 0.05em;
     text-align: center;
+    animation: borderFlicker 4s ease-in-out infinite;
   }
 
   h3 {
@@ -203,6 +211,7 @@
 
   /* CITAS */
   blockquote {
+    animation: quoteSlideIn 0.6s ease both;
     border-left: 4px solid var(--red);
     padding: 12px 20px;
     margin: 20px 0;
@@ -248,7 +257,12 @@
     padding: 25px;
     position: relative;
     opacity: 0;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     animation: slideUp 0.8s ease 0.5s forwards;
+  }
+  .aside-block:hover {
+    transform: translateY(-2px);
+    box-shadow: 5px 7px 22px var(--shadow);
   }
 
   .aside-block::before {
@@ -287,6 +301,7 @@
     justify-content: center;
     font-size: 2.5rem;
     filter: drop-shadow(3px 3px 8px rgba(0,0,0,0.5));
+    animation: shieldFloat 3s ease-in-out infinite;
   }
 
   /* LISTA ESTILO PERGAMINO */
@@ -301,6 +316,11 @@
     border-bottom: 1px dotted var(--gold);
     font-size: 0.9rem;
     line-height: 1.5;
+    transition: color 0.2s, padding-left 0.2s;
+  }
+  .medieval-list li:hover {
+    color: var(--red);
+    padding-left: 26px;
   }
 
   .medieval-list li::before {
@@ -324,6 +344,7 @@
     left: 0; top: 0; bottom: 0;
     width: 2px;
     background: linear-gradient(to bottom, var(--red), var(--gold), var(--red));
+    animation: timelineLine 2s ease 0.5s both;
   }
 
   .timeline-item {
@@ -341,7 +362,17 @@
     background: var(--red);
     border: 2px solid var(--gold);
     transform: rotate(45deg);
+    animation: diamondPop 0.5s ease both;
   }
+  .timeline-item:nth-child(1)::before { animation-delay: 0.8s; }
+  .timeline-item:nth-child(2)::before { animation-delay: 1.0s; }
+  .timeline-item:nth-child(3)::before { animation-delay: 1.2s; }
+  .timeline-item:nth-child(4)::before { animation-delay: 1.4s; }
+  .timeline-item:nth-child(5)::before { animation-delay: 1.6s; }
+  .timeline-item:nth-child(6)::before { animation-delay: 1.8s; }
+  .timeline-item:nth-child(7)::before { animation-delay: 2.0s; }
+  .timeline-item:nth-child(8)::before { animation-delay: 2.2s; }
+  .timeline-item:nth-child(9)::before { animation-delay: 2.4s; }
 
   .timeline-year {
     font-family: 'Cinzel', serif;
@@ -373,6 +404,7 @@
     color: var(--ink-light);
     text-align: center;
     margin: 0;
+    animation: footerGlow 3s ease-in-out infinite;
   }
 
   /* SCROLL DECORATION */
@@ -384,15 +416,81 @@
     letter-spacing: 0.8rem;
   }
 
-  /* ANIMACIONES */
+  /* ===== KEYFRAMES ===== */
   @keyframes fadeIn {
     from { opacity: 0; transform: translateY(-10px); }
-    to { opacity: 1; transform: translateY(0); }
+    to   { opacity: 1; transform: translateY(0); }
   }
-
   @keyframes slideUp {
     from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes slideInLeft {
+    from { opacity: 0; transform: translateX(-40px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+  @keyframes slideInRight {
+    from { opacity: 0; transform: translateX(40px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+  @keyframes flameFlicker {
+    0%,100% { text-shadow: 0 0 8px #c9a84c, 0 0 20px #8b1a1a, 2px 2px 0 rgba(154,124,46,0.3); }
+    25%      { text-shadow: 0 0 15px #c9a84c, 0 0 35px #8b1a1a, 2px 2px 0 rgba(154,124,46,0.3); }
+    50%      { text-shadow: 0 0 6px #9a7c2e,  0 0 18px #5c1111, 2px 2px 0 rgba(154,124,46,0.3); }
+    75%      { text-shadow: 0 0 20px #c9a84c, 0 0 40px #8b1a1a, 2px 2px 0 rgba(154,124,46,0.3); }
+  }
+  @keyframes candleGlow {
+    0%,100% { box-shadow: 4px 4px 20px var(--shadow), inset 0 0 30px rgba(154,124,46,0.08); }
+    50%      { box-shadow: 4px 4px 30px var(--shadow), inset 0 0 50px rgba(154,124,46,0.18), 0 0 20px rgba(201,168,76,0.1); }
+  }
+  @keyframes shieldFloat {
+    0%,100% { transform: translateY(0);    filter: drop-shadow(3px 3px 8px rgba(0,0,0,0.5)); }
+    50%      { transform: translateY(-7px); filter: drop-shadow(3px 10px 14px rgba(0,0,0,0.65)); }
+  }
+  @keyframes ornamentSpin {
+    from { transform: translateY(-50%) rotate(0deg); }
+    to   { transform: translateY(-50%) rotate(360deg); }
+  }
+  @keyframes diamondPop {
+    0%   { transform: rotate(45deg) scale(0); opacity: 0; }
+    60%  { transform: rotate(45deg) scale(1.3); }
+    100% { transform: rotate(45deg) scale(1);  opacity: 1; }
+  }
+  @keyframes vignetteShimmer {
+    0%,100% { letter-spacing: 0.5rem; opacity: 0.8; }
+    50%      { letter-spacing: 0.7rem; opacity: 1; }
+  }
+  @keyframes footerGlow {
+    0%,100% { opacity: 0.65; }
+    50%      { opacity: 1; text-shadow: 0 0 10px rgba(201,168,76,0.5); }
+  }
+  @keyframes tesisFadeIn {
+    from { opacity: 0; transform: translateX(-10px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+  @keyframes modalHeaderPulse {
+    0%,100% { background: var(--red); }
+    50%      { background: #7a1515; }
+  }
+  @keyframes progressGlow {
+    0%,100% { box-shadow: none; }
+    50%      { box-shadow: 0 0 8px rgba(201,168,76,0.6); }
+  }
+  @keyframes borderFlicker {
+    0%,100% { border-color: var(--gold); }
+    50%      { border-color: var(--gold-light); }
+  }
+  @keyframes quoteSlideIn {
+    from { opacity: 0; transform: translateX(-20px); border-left-color: transparent; }
+    to   { opacity: 1; transform: translateX(0);     border-left-color: var(--red); }
+  }
+  @keyframes h3Reveal {
+    from { opacity: 0; letter-spacing: 0.3em; }
+    to   { opacity: 1; letter-spacing: 0; }
+  }
+  @keyframes timelineLine {
+    from { transform: scaleY(0); transform-origin: top; }
+    to   { transform: scaleY(1); transform-origin: top; }
   }
 
   /* ===== TOOLTIP IMAGEN ===== */
@@ -468,8 +566,9 @@
   }
   .btn-tesis:hover {
     background: linear-gradient(135deg, #a02020 0%, #7a1818 100%);
-    box-shadow: 4px 4px 20px rgba(139,26,26,0.6), inset 0 1px 0 rgba(255,255,255,0.15);
-    transform: translateY(-1px);
+    box-shadow: 4px 4px 20px rgba(139,26,26,0.6), 0 0 25px rgba(201,168,76,0.3), inset 0 1px 0 rgba(255,255,255,0.15);
+    transform: translateY(-2px) scale(1.01);
+    letter-spacing: 0.2em;
   }
   .btn-tesis::before {
     content: '📜';
@@ -533,6 +632,7 @@
     text-align: center;
     position: relative;
     flex-shrink: 0;
+    animation: modalHeaderPulse 4s ease-in-out infinite;
   }
 
   .modal-header h2 {
@@ -566,11 +666,12 @@
     letter-spacing: 0.1em;
     padding: 4px 10px;
     cursor: pointer;
-    transition: all 0.2s;
+    transition: all 0.25s;
   }
   .modal-close:hover {
     background: rgba(242,232,201,0.15);
     border-color: var(--parchment);
+    transform: scale(1.05);
   }
 
   /* REPRODUCTOR DE AUDIO */
@@ -623,7 +724,7 @@
     transition: background 0.2s;
     clip-path: polygon(4px 0%, calc(100% - 4px) 0%, 100% 4px, 100% calc(100% - 4px), calc(100% - 4px) 100%, 4px 100%, 0% calc(100% - 4px), 0% 4px);
   }
-  .play-btn:hover { background: #a02020; }
+  .play-btn:hover { background: #a02020; transform: scale(1.1); }
   .play-btn:disabled { background: #c0a080; cursor: not-allowed; opacity: 0.5; }
 
   .progress-wrap {
@@ -640,6 +741,7 @@
     width: 0%;
     transition: width 0.1s linear;
     pointer-events: none;
+    animation: progressGlow 2s ease-in-out infinite;
   }
 
   .time-display {
@@ -708,6 +810,11 @@
     padding: 5px 0;
     text-align: center;
     margin-bottom: 12px;
+    transition: letter-spacing 0.3s, color 0.3s;
+  }
+  .tesis-grupo-titulo:hover {
+    letter-spacing: 0.2em;
+    color: var(--gold);
   }
 
   .tesis-item {
@@ -716,6 +823,8 @@
     margin-bottom: 9px;
     line-height: 1.65;
     font-size: 0.87rem;
+    opacity: 0;
+    animation: tesisFadeIn 0.4s ease both;
   }
 
   .tesis-num {
@@ -742,26 +851,20 @@
     .custom-player { width: 100%; }
   }
 
-  .audio-inline {
-  margin: 18px 0;
-  border: 1px solid var(--gold);
-  background: linear-gradient(to bottom, rgba(139,26,26,0.06), transparent);
-  padding: 12px 16px;
-}
-.audio-inline-label {
-  font-family: 'Cinzel', serif;
-  font-size: 0.72rem;
-  letter-spacing: 0.12em;
-  color: var(--red);
-  text-transform: uppercase;
-  margin-bottom: 10px;
-  text-align: center;
-}
+  @keyframes dustFloat {
+    from { transform: translateY(0) translateX(0) scale(1); opacity: 0.3; }
+    to   { transform: translateY(-20px) translateX(8px) scale(1.5); opacity: 0; }
+  }
+  @keyframes ripple {
+    from { transform: scale(0); opacity: 1; }
+    to   { transform: scale(2.5); opacity: 0; }
+  }
+
 </style>
 </head>
 <body>
 
-<div class="banner">⚜ Oriol PIQUERAS PIRIS (el genio) ⚜ Maxime LANGE RODILLA (el alfil) ⚜ Alban JACTAT (el ultimo) ⚜</div>
+<div class="banner">⚜ In Nomine Domini ⚜ Crónicas de la Reforma Protestante ⚜ Anno Domini MDXVII ⚜</div>
 
 <header>
   <div class="header-ornament-top"></div>
@@ -780,19 +883,6 @@
 
     <article class="parchment-block">
       <h2>✦ El Origen de la Reforma ✦</h2>
-
-      <div class="audio-inline">
-  <div class="audio-inline-label">⚜ el origen de la reforma ⚜</div>  <!-- ← CHANGER LE TITRE -->
-  <div class="custom-player">
-    <button class="play-btn" onclick="togglePlayInline(this)">▶</button>
-    <div class="progress-wrap" onclick="saltarInline(event, this)">
-      <div class="progress-bar"></div>
-    </div>
-    <span class="time-display">0:00 / 0:00</span>
-    <button class="replay-btn" onclick="reiniciarInline(this)">↺ Reiniciar</button>
-  </div>
-  <audio src="origen.mp3" onended="resetInline(this)" ontimeupdate="updateInline(this)"></audio>  <!-- ← CHANGER LE FICHIER -->
-</div>
       <p class="drop-cap">
         En el año del Señor de mil quinientos diecisiete, un fraile agustino de nombre Martín Lutero clavó sus noventa y cinco tesis en las puertas de la iglesia del castillo de Wittenberg, en el Sacro Imperio Romano Germánico. Este acto, aparentemente modesto, encendió la llama de una revolución espiritual que sacudiría los cimientos de la Christianitas medieval.
       </p>
@@ -852,13 +942,13 @@
       <h2>Figuras</h2>
       <ul class="medieval-list">
         <li><strong class="figura-nombre">Martín Lutero
-          <div class="figura-tooltip"><img src="lutero.jpeg" alt="Martín Lutero"><span>Martín Lutero</span></div>
+          <div class="figura-tooltip"><img src="lutero.jpg" alt="Martín Lutero"><span>Martín Lutero</span></div>
         </strong> — Wittenberg, 1483–1546</li>
         <li><strong class="figura-nombre">Juan Calvino
-          <div class="figura-tooltip"><img src="calvino.png" alt="Juan Calvino"><span>Juan Calvino</span></div>
+          <div class="figura-tooltip"><img src="calvino.jpg" alt="Juan Calvino"><span>Juan Calvino</span></div>
         </strong> — Ginebra, 1509–1564</li>
         <li><strong class="figura-nombre">Ulrico Zwinglio
-          <div class="figura-tooltip"><img src="zwinglio.jpeg" alt="Ulrico Zwinglio"><span>Ulrico Zwinglio</span></div>
+          <div class="figura-tooltip"><img src="zwinglio.jpg" alt="Ulrico Zwinglio"><span>Ulrico Zwinglio</span></div>
         </strong> — Zúrich, 1484–1531</li>
         <li><strong class="figura-nombre">Enrique VIII
           <div class="figura-tooltip"><img src="enrique8.jpg" alt="Enrique VIII"><span>Enrique VIII</span></div>
@@ -981,8 +1071,7 @@
     <!-- TEXTO DE LAS 95 TESIS -->
     <div class="modal-body">
       <p class="tesis-intro">
-En 1517, Lutero declinó un movimiento de reforma al declarar ses 95 tesis contre les indulgencias.<br>
-En las primeras tesis, Lutero desarrolló la idea del arrepentimiento como la lucha interna del cristiano contra el pecado en lugar del sistema externo de la confesión sacramental.
+        Por amor a la verdad y en deseo de que sea discutida, el reverendo padre Martín Lutero, maestro en Artes y en Sagrada Teología, y profesor ordinario en Wittenberg, pide que los siguientes artículos sean discutidos, no pudiendo por sí mismo defender oralmente las que siguen a los ausentes.
       </p>
 
       <div class="tesis-grupo">
@@ -1134,7 +1223,7 @@ En las primeras tesis, Lutero desarrolló la idea del arrepentimiento como la lu
     document.body.style.overflow = 'hidden';
     // Lanzar audio automáticamente al abrir
     if (!audio.src || audio.src === window.location.href) {
-      audio.src = 'tesis.mp3';
+      audio.src = 'audio_1.mp3';
       audio.load();
     }
     audio.play().then(() => {
@@ -1206,35 +1295,92 @@ En las primeras tesis, Lutero desarrolló la idea del arrepentimiento como la lu
     const sec = Math.floor(s % 60).toString().padStart(2, '0');
     return m + ':' + sec;
   }
-  function togglePlayInline(btn) {
-  const audio = btn.closest('.audio-inline').querySelector('audio');
-  if (audio.paused) { audio.play(); btn.textContent = '⏸'; }
-  else { audio.pause(); btn.textContent = '▶'; }
-}
-function reiniciarInline(btn) {
-  const audio = btn.closest('.audio-inline').querySelector('audio');
-  audio.currentTime = 0; audio.play();
-  btn.closest('.custom-player').querySelector('.play-btn').textContent = '⏸';
-}
-function resetInline(audioEl) {
-  const player = audioEl.closest('.audio-inline').querySelector('.custom-player');
-  player.querySelector('.play-btn').textContent = '▶';
-  player.querySelector('.progress-bar').style.width = '0%';
-}
-function updateInline(audioEl) {
-  if (!audioEl.duration) return;
-  const player = audioEl.closest('.audio-inline').querySelector('.custom-player');
-  const pct = (audioEl.currentTime / audioEl.duration) * 100;
-  player.querySelector('.progress-bar').style.width = pct + '%';
-  player.querySelector('.time-display').textContent =
-    formatTime(audioEl.currentTime) + ' / ' + formatTime(audioEl.duration);
-}
-function saltarInline(e, wrap) {
-  const audio = wrap.closest('.audio-inline').querySelector('audio');
-  if (!audio.duration) return;
-  const rect = wrap.getBoundingClientRect();
-  audio.currentTime = ((e.clientX - rect.left) / rect.width) * audio.duration;
-}
+
+  // ===== SCROLL OBSERVER — elementos entran al viewport =====
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.animationPlayState = 'running';
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  // Pausar parchment-blocks y aside-blocks hasta que sean visibles
+  document.querySelectorAll('.parchment-block, .aside-block').forEach((el, i) => {
+    el.style.animationPlayState = 'paused';
+    el.style.animationDelay = (i * 0.12) + 's';
+    observer.observe(el);
+  });
+
+  // ===== TESIS — fade escalonado al abrir modal =====
+  function animarTesis() {
+    const items = document.querySelectorAll('.tesis-item');
+    items.forEach((item, i) => {
+      item.style.animationDelay = (i * 0.03) + 's';
+      item.style.animationPlayState = 'running';
+    });
+    const grupos = document.querySelectorAll('.tesis-grupo-titulo');
+    grupos.forEach((g, i) => {
+      g.style.opacity = '0';
+      g.style.animation = 'fadeIn 0.5s ease ' + (i * 0.15 + 0.1) + 's both';
+    });
+  }
+
+  // Llamar animarTesis al abrir el modal
+  const _abrirTesisOriginal = abrirTesis;
+  // Patch: añadimos animarTesis tras un tick para que el modal sea visible
+  document.addEventListener('DOMContentLoaded', () => {
+    const btn = document.querySelector('.btn-tesis');
+    if (btn) {
+      btn.addEventListener('click', () => {
+        setTimeout(animarTesis, 80);
+      });
+    }
+  });
+
+  // ===== PARTÍCULAS DE POLVO en el header =====
+  (function crearPolvo() {
+    const header = document.querySelector('header');
+    for (let i = 0; i < 18; i++) {
+      const p = document.createElement('span');
+      p.style.cssText = `
+        position:absolute;
+        width:${1 + Math.random()*2}px;
+        height:${1 + Math.random()*2}px;
+        background:rgba(201,168,76,${0.2 + Math.random()*0.4});
+        border-radius:50%;
+        left:${Math.random()*100}%;
+        top:${Math.random()*100}%;
+        pointer-events:none;
+        animation: dustFloat ${4 + Math.random()*6}s ease-in-out ${Math.random()*4}s infinite alternate;
+        z-index:1;
+      `;
+      header.appendChild(p);
+    }
+  })();
+
+  // ===== RIPPLE en el botón de las tesis =====
+  document.querySelectorAll('.btn-tesis').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      const r = document.createElement('span');
+      const rect = btn.getBoundingClientRect();
+      const size = Math.max(rect.width, rect.height);
+      r.style.cssText = `
+        position:absolute;
+        width:${size}px; height:${size}px;
+        border-radius:50%;
+        background:rgba(201,168,76,0.3);
+        left:${e.clientX - rect.left - size/2}px;
+        top:${e.clientY - rect.top - size/2}px;
+        transform:scale(0);
+        animation:ripple 0.6s ease-out forwards;
+        pointer-events:none;
+      `;
+      btn.appendChild(r);
+      setTimeout(() => r.remove(), 700);
+    });
+  });
 </script>
 </body>
 </html>
