@@ -968,6 +968,17 @@
     </article>
 
     <article class="parchment-block">
+        <div class="audio-inline">
+  <div class="custom-player">
+    <button class="play-btn" onclick="togglePlayInline(this)">▶</button>
+    <div class="progress-wrap" onclick="saltarInline(event, this)">
+      <div class="progress-bar"></div>
+    </div>
+    <span class="time-display">0:00 / 0:00</span>
+    <button class="replay-btn" onclick="reiniciarInline(this)">↺ Reiniciar</button>
+  </div>
+  <audio src="reforma.mp3" onended="resetInline(this)" ontimeupdate="updateInline(this)"></audio>  <!-- ← CHANGER LE FICHIER -->
+</div>
       <h2>✦ Las Doctrinas de la Nueva Fe ✦</h2>
       <div class="illus-wrap">
   <center><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 200" width="340" height="200">
@@ -1002,17 +1013,6 @@
     <text x="170" y="14" font-family="serif" font-size="9" fill="#8b1a1a" text-anchor="middle" font-style="italic">Concilio de Trento · MDXLV</text>
   </svg>
 
-</div>
-  <div class="audio-inline">
-  <div class="custom-player">
-    <button class="play-btn" onclick="togglePlayInline(this)">▶</button>
-    <div class="progress-wrap" onclick="saltarInline(event, this)">
-      <div class="progress-bar"></div>
-    </div>
-    <span class="time-display">0:00 / 0:00</span>
-    <button class="replay-btn" onclick="reiniciarInline(this)">↺ Reiniciar</button>
-  </div>
-  <audio src="reforma.mp3" onended="resetInline(this)" ontimeupdate="updateInline(this)"></audio>  <!-- ← CHANGER LE FICHIER -->
 </div></center>
       <div class="section-ornament">— ✦ —</div>
 
