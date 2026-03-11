@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>La Reforma Protestante — Crónica de los Siglos XVI - 1.5</title>
+<title>La Reforma Protestante — Crónica de los Siglos XVI</title>
 <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&family=IM+Fell+English:ital@0;1&family=Cinzel+Decorative:wght@400;700&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
 <style>
   /* ══════════════════════════════════════════
@@ -827,21 +827,43 @@
     h1 { font-size: 2rem; }
     .header-inner { padding: 28px 20px; margin: 12px 14px; }
   }
-  .audio-inline {
-  margin: 18px 0;
-  border: 1px solid var(--gold);
-  background: linear-gradient(to bottom, rgba(139,26,26,0.06), transparent);
-  padding: 12px 16px;
-}
-.audio-inline-label {
-  font-family: 'Cinzel', serif;
-  font-size: 0.72rem;
-  letter-spacing: 0.12em;
-  color: var(--red);
-  text-transform: uppercase;
-  margin-bottom: 10px;
-  text-align: center;
-}
+
+  /* ══════════════════════════════════════════
+     ILUSTRACIONES
+  ══════════════════════════════════════════ */
+  .illus-wrap {
+    margin: 32px auto;
+    text-align: center;
+  }
+  .illus-wrap svg {
+    max-width: 100%;
+    filter: drop-shadow(0 4px 16px rgba(20,10,0,0.18));
+    opacity: 0;
+    animation: slideUp 1s ease 0.3s both;
+    transition: filter 0.3s ease, transform 0.3s ease;
+  }
+  .illus-wrap svg:hover {
+    filter: drop-shadow(0 6px 24px rgba(139,26,26,0.25));
+    transform: translateY(-3px);
+  }
+  .illus-caption {
+    font-family: 'Cinzel', serif;
+    font-size: 0.65rem;
+    color: var(--ink-faint);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-top: 10px;
+    opacity: 0.7;
+  }
+  .illus-row {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 28px 0;
+  }
+  .illus-row .illus-wrap { flex: 1; min-width: 140px; max-width: 200px; }
+
 </style>
 </head>
 <body>
@@ -864,22 +886,9 @@
   <div>
 
     <article class="parchment-block">
-
-      <div class="audio-inline">
-  <div class="custom-player">
-    <button class="play-btn" onclick="togglePlayInline(this)">▶</button>
-    <div class="progress-wrap" onclick="saltarInline(event, this)">
-      <div class="progress-bar"></div>
-    </div>
-    <span class="time-display">0:00 / 0:00</span>
-    <button class="replay-btn" onclick="reiniciarInline(this)">↺ Reiniciar</button>
-  </div>
-  <audio src="origen.mp3" onended="resetInline(this)" ontimeupdate="updateInline(this)"></audio>  <!-- ← CHANGER LE FICHIER -->
-</div>
-
       <h2>✦ El Origen de la Reforma ✦</h2>
-      <center><div class="illus-wrap">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 220" width="360" height="220">
+      <div class="illus-wrap">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 220" width="360" height="220">
   <defs>
     <filter id="parch1"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" result="noise"/><feDisplacementMap in="SourceGraphic" in2="noise" scale="2" xChannelSelector="R" yChannelSelector="G"/></filter>
     <linearGradient id="sky1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#e8dfc0"/><stop offset="100%" stop-color="#c9b88a"/></linearGradient>
@@ -952,7 +961,8 @@
   <!-- texto decorativo -->
   <text x="180" y="16" font-family="serif" font-size="9" fill="#8b1a1a" text-anchor="middle" font-style="italic">Wittenberg · MDXVII</text>
 </svg>
-</div></center>
+        <p class="illus-caption">Lutero clavando las 95 Tesis · Wittenberg, 1517</p>
+      </div>
       <p class="drop-cap">
         En 1517, el fraile agustino Martín Lutero clavó sus noventa y cinco tesis en las puertas de la iglesia de Wittenberg. Aquel gesto encendió una revolución espiritual que sacudiría los cimientos de la Christianitas medieval.
       </p>
@@ -963,45 +973,56 @@
         "Aquí me encuentro, no puedo hacer otra cosa."
         <cite>— Lutero, Dieta de Worms, 1521</cite>
       </blockquote>
-      
-
     </article>
 
     <article class="parchment-block">
       <h2>✦ Las Doctrinas de la Nueva Fe ✦</h2>
       <div class="illus-wrap">
-  <center><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 200" width="340" height="200">
-    <defs>
-      <linearGradient id="bg3" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#ddd5b5"/><stop offset="100%" stop-color="#c0aa7a"/></linearGradient>
-      <linearGradient id="arch3" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#b0956a"/><stop offset="100%" stop-color="#8a7448"/></linearGradient>
-    </defs>
-    <rect width="340" height="200" fill="url(#bg3)"/>
-    <path d="M10,180 L10,60 Q40,20 70,60 L70,180Z" fill="url(#arch3)" opacity="0.5"/>
-    <path d="M80,180 L80,50 Q115,8 150,50 L150,180Z" fill="url(#arch3)" opacity="0.4"/>
-    <path d="M160,180 L160,50 Q195,8 230,50 L230,180Z" fill="url(#arch3)" opacity="0.4"/>
-    <path d="M240,180 L240,60 Q270,20 300,60 L300,180Z" fill="url(#arch3)" opacity="0.5"/>
-    <rect x="20" y="135" width="300" height="12" rx="2" fill="#6b4c2a"/>
-    <rect x="30" y="147" width="12" height="25" fill="#5c3a1e"/>
-    <rect x="298" y="147" width="12" height="25" fill="#5c3a1e"/>
-    <circle cx="50" cy="118" r="9" fill="#d4b896"/><rect x="43" y="127" width="14" height="14" fill="#1a0e05"/>
-    <circle cx="95" cy="114" r="9" fill="#c8a87c"/><rect x="88" y="123" width="14" height="14" fill="#3b2408"/>
-    <circle cx="140" cy="112" r="10" fill="#d4b896"/><rect x="132" y="122" width="16" height="14" fill="#1a0e05"/>
-    <circle cx="170" cy="108" r="10" fill="#c8a87c"/>
-    <path d="M162,108 L170,88 L178,108Z" fill="#8b1a1a"/>
-    <rect x="162" y="118" width="16" height="16" fill="#8b1a1a"/>
-    <circle cx="210" cy="113" r="9" fill="#d4b896"/><rect x="203" y="122" width="14" height="14" fill="#3b2408"/>
-    <circle cx="255" cy="116" r="9" fill="#c8a87c"/><rect x="248" y="125" width="14" height="14" fill="#1a0e05"/>
-    <circle cx="298" cy="119" r="9" fill="#d4b896"/><rect x="291" y="128" width="14" height="14" fill="#3b2408"/>
-    <rect x="55" y="126" width="22" height="10" rx="1" fill="#f2e8c9" stroke="#9a7c2e" stroke-width="0.7"/>
-    <rect x="145" y="124" width="22" height="10" rx="1" fill="#f2e8c9" stroke="#9a7c2e" stroke-width="0.7"/>
-    <rect x="218" y="125" width="22" height="10" rx="1" fill="#f2e8c9" stroke="#9a7c2e" stroke-width="0.7"/>
-    <rect x="120" y="110" width="3" height="18" fill="#f2e8c9"/>
-    <ellipse cx="121" cy="108" rx="2" ry="4" fill="#f5c842" opacity="0.8"/>
-    <rect x="215" y="108" width="3" height="20" fill="#f2e8c9"/>
-    <ellipse cx="216" cy="106" rx="2" ry="4" fill="#f5c842" opacity="0.8"/>
-    <text x="170" y="14" font-family="serif" font-size="9" fill="#8b1a1a" text-anchor="middle" font-style="italic">Concilio de Trento · MDXLV</text>
-  </svg>
-</div></center>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 200" width="340" height="200">
+  <defs>
+    <linearGradient id="bg3" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#ddd5b5"/><stop offset="100%" stop-color="#c0aa7a"/></linearGradient>
+    <linearGradient id="arch3" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#b0956a"/><stop offset="100%" stop-color="#8a7448"/></linearGradient>
+  </defs>
+  <rect width="340" height="200" fill="url(#bg3)"/>
+  <!-- arcos góticos fondo -->
+  <path d="M10,180 L10,60 Q40,20 70,60 L70,180Z" fill="url(#arch3)" opacity="0.5"/>
+  <path d="M80,180 L80,50 Q115,8 150,50 L150,180Z" fill="url(#arch3)" opacity="0.4"/>
+  <path d="M160,180 L160,50 Q195,8 230,50 L230,180Z" fill="url(#arch3)" opacity="0.4"/>
+  <path d="M240,180 L240,60 Q270,20 300,60 L300,180Z" fill="url(#arch3)" opacity="0.5"/>
+  <!-- mesa larga -->
+  <rect x="20" y="135" width="300" height="12" rx="2" fill="#6b4c2a"/>
+  <rect x="30" y="147" width="12" height="25" fill="#5c3a1e"/>
+  <rect x="298" y="147" width="12" height="25" fill="#5c3a1e"/>
+  <!-- figuras sentadas (6 teólogos) -->
+  <!-- figura 1 -->
+  <circle cx="50" cy="118" r="9" fill="#d4b896"/><rect x="43" y="127" width="14" height="14" fill="#1a0e05"/>
+  <!-- figura 2 -->
+  <circle cx="95" cy="114" r="9" fill="#c8a87c"/><rect x="88" y="123" width="14" height="14" fill="#3b2408"/>
+  <!-- figura 3 -->
+  <circle cx="140" cy="112" r="10" fill="#d4b896"/><rect x="132" y="122" width="16" height="14" fill="#1a0e05"/>
+  <!-- figura central con mitra (obispo) -->
+  <circle cx="170" cy="108" r="10" fill="#c8a87c"/>
+  <path d="M162,108 L170,88 L178,108Z" fill="#8b1a1a"/><!-- mitra -->
+  <rect x="162" y="118" width="16" height="16" fill="#8b1a1a"/>
+  <!-- figura 5 -->
+  <circle cx="210" cy="113" r="9" fill="#d4b896"/><rect x="203" y="122" width="14" height="14" fill="#3b2408"/>
+  <!-- figura 6 -->
+  <circle cx="255" cy="116" r="9" fill="#c8a87c"/><rect x="248" y="125" width="14" height="14" fill="#1a0e05"/>
+  <!-- figura 7 -->
+  <circle cx="298" cy="119" r="9" fill="#d4b896"/><rect x="291" y="128" width="14" height="14" fill="#3b2408"/>
+  <!-- pergaminos sobre mesa -->
+  <rect x="55" y="126" width="22" height="10" rx="1" fill="#f2e8c9" stroke="#9a7c2e" stroke-width="0.7"/>
+  <rect x="145" y="124" width="22" height="10" rx="1" fill="#f2e8c9" stroke="#9a7c2e" stroke-width="0.7"/>
+  <rect x="218" y="125" width="22" height="10" rx="1" fill="#f2e8c9" stroke="#9a7c2e" stroke-width="0.7"/>
+  <!-- velas -->
+  <rect x="120" y="110" width="3" height="18" fill="#f2e8c9"/>
+  <ellipse cx="121" cy="108" rx="2" ry="4" fill="#f5c842" opacity="0.8"/>
+  <rect x="215" y="108" width="3" height="20" fill="#f2e8c9"/>
+  <ellipse cx="216" cy="106" rx="2" ry="4" fill="#f5c842" opacity="0.8"/>
+  <text x="170" y="14" font-family="serif" font-size="9" fill="#8b1a1a" text-anchor="middle" font-style="italic">Concilio de Trento · MDXLV</text>
+</svg>
+        <p class="illus-caption">Asamblea de teólogos reformados · Siglo XVI</p>
+      </div>
       <div class="section-ornament">— ✦ —</div>
 
       <h3>Sola Scriptura</h3>
@@ -1017,36 +1038,40 @@
         "La Biblia es la cuna donde yace Cristo."
         <cite>— Martín Lutero</cite>
       </blockquote>
-      
     </article>
 
     <article class="parchment-block">
-      
       <h2>✦ Las Guerras de Religión ✦</h2>
-      <center><div class="illus-wrap">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 200" width="260" height="200">
-    <defs>
-      <linearGradient id="bg5" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#c8b890"/><stop offset="100%" stop-color="#a09060"/></linearGradient>
-      <linearGradient id="blade" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#d0ccc0"/><stop offset="50%" stop-color="#f0ece0"/><stop offset="100%" stop-color="#b0a898"/></linearGradient>
-      <filter id="glow5"><feGaussianBlur stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-    </defs>
-    <rect width="260" height="200" fill="url(#bg5)"/>
-    <ellipse cx="130" cy="185" rx="70" ry="20" fill="#8b1a1a" opacity="0.3"/>
-    <path d="M80,185 Q95,140 110,155 Q120,120 130,100 Q140,120 150,140 Q165,125 175,155 Q190,135 195,185Z" fill="#c9620a" opacity="0.4"/>
-    <path d="M95,185 Q108,150 118,162 Q128,130 133,115 Q140,135 148,155 Q158,138 168,162 Q180,145 182,185Z" fill="#f0a030" opacity="0.5"/>
-    <rect x="116" y="28" width="28" height="100" rx="3" fill="#f2e8c9" stroke="#c9a84c" stroke-width="2" filter="url(#glow5)"/>
-    <rect x="85" y="58" width="90" height="28" rx="3" fill="#f2e8c9" stroke="#c9a84c" stroke-width="2" filter="url(#glow5)"/>
-    <circle cx="130" cy="72" r="10" fill="none" stroke="#c9a84c" stroke-width="1.5"/>
-    <circle cx="130" cy="72" r="5" fill="#c9a84c" opacity="0.6"/>
-    <line x1="175" y1="30" x2="60" y2="175" stroke="url(#blade)" stroke-width="8" stroke-linecap="round"/>
-    <rect x="88" y="88" width="50" height="10" rx="2" fill="#c9a84c" transform="rotate(50,113,93)"/>
-    <ellipse cx="172" cy="32" rx="7" ry="10" fill="#6b4c2a" transform="rotate(-40,172,32)"/>
-    <line x1="85" y1="30" x2="200" y2="175" stroke="url(#blade)" stroke-width="8" stroke-linecap="round" opacity="0.7"/>
-    <rect x="122" y="88" width="50" height="10" rx="2" fill="#9a7c2e" transform="rotate(-50,147,93)"/>
-    <ellipse cx="88" cy="32" rx="7" ry="10" fill="#6b4c2a" transform="rotate(40,88,32)"/>
-    <text x="130" y="194" font-family="serif" font-size="9" fill="#f2e8c9" text-anchor="middle" font-style="italic">Reformatio et Bellum</text>
-  </svg>
-</div></center>
+      <div class="illus-wrap">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 200" width="260" height="200">
+  <defs>
+    <linearGradient id="bg5" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#c8b890"/><stop offset="100%" stop-color="#a09060"/></linearGradient>
+    <linearGradient id="blade" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#d0ccc0"/><stop offset="50%" stop-color="#f0ece0"/><stop offset="100%" stop-color="#b0a898"/></linearGradient>
+    <filter id="glow5"><feGaussianBlur stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <rect width="260" height="200" fill="url(#bg5)"/>
+  <!-- llamas fondo -->
+  <ellipse cx="130" cy="185" rx="70" ry="20" fill="#8b1a1a" opacity="0.3"/>
+  <path d="M80,185 Q95,140 110,155 Q120,120 130,100 Q140,120 150,140 Q165,125 175,155 Q190,135 195,185Z" fill="#c9620a" opacity="0.4"/>
+  <path d="M95,185 Q108,150 118,162 Q128,130 133,115 Q140,135 148,155 Q158,138 168,162 Q180,145 182,185Z" fill="#f0a030" opacity="0.5"/>
+  <!-- Cruz grande -->
+  <rect x="116" y="28" width="28" height="100" rx="3" fill="#f2e8c9" stroke="#c9a84c" stroke-width="2" filter="url(#glow5)"/>
+  <rect x="85" y="58" width="90" height="28" rx="3" fill="#f2e8c9" stroke="#c9a84c" stroke-width="2" filter="url(#glow5)"/>
+  <!-- decoración cruz -->
+  <circle cx="130" cy="72" r="10" fill="none" stroke="#c9a84c" stroke-width="1.5"/>
+  <circle cx="130" cy="72" r="5" fill="#c9a84c" opacity="0.6"/>
+  <!-- espada cruzada derecha -->
+  <line x1="175" y1="30" x2="60" y2="175" stroke="url(#blade)" stroke-width="8" stroke-linecap="round"/>
+  <rect x="88" y="88" width="50" height="10" rx="2" fill="#c9a84c" transform="rotate(50,113,93)"/><!-- guarda -->
+  <ellipse cx="172" cy="32" rx="7" ry="10" fill="#6b4c2a" transform="rotate(-40,172,32)"/><!-- pomo -->
+  <!-- espada cruzada izquierda -->
+  <line x1="85" y1="30" x2="200" y2="175" stroke="url(#blade)" stroke-width="8" stroke-linecap="round" opacity="0.7"/>
+  <rect x="122" y="88" width="50" height="10" rx="2" fill="#9a7c2e" transform="rotate(-50,147,93)"/>
+  <ellipse cx="88" cy="32" rx="7" ry="10" fill="#6b4c2a" transform="rotate(40,88,32)"/>
+  <text x="130" y="194" font-family="serif" font-size="9" fill="#f2e8c9" text-anchor="middle" font-style="italic">Reformatio et Bellum</text>
+</svg>
+        <p class="illus-caption">Reformatio et Bellum · Europa, 1524–1648</p>
+      </div>
       <p>
         La ruptura no fue solo espiritual: fue de fuego y espada. La noche de San Bartolomé (1572) tiñó de sangre las calles de París. La Paz de Augsburgo (1555) consagró el principio <em>cuius regio, eius religio</em>.
       </p>
@@ -1054,10 +1079,12 @@
         Calvino gobernó Ginebra como ciudad de Dios; Enrique VIII fundó la Iglesia Anglicana. La Reforma no fue un movimiento uniforme, sino un huracán que sopló en mil direcciones.
       </p>
     </article>
-<article class="parchment-block">
+
+
+    <article class="parchment-block">
       <h2>✦ La Imprenta — Arma de Dios ✦</h2>
       <div class="illus-wrap">
-        <center><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200" width="320" height="200">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200" width="320" height="200">
   <defs>
     <linearGradient id="bg2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#e0d4b0"/><stop offset="100%" stop-color="#c8b880"/></linearGradient>
     <linearGradient id="wood2" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#7a5c30"/><stop offset="100%" stop-color="#4a3018"/></linearGradient>
@@ -1100,7 +1127,8 @@
   <rect x="258" y="124" width="14" height="28" fill="#4a3018"/>
   <line x1="265" y1="130" x2="245" y2="125" stroke="#3b2408" stroke-width="4" stroke-linecap="round"/>
   <text x="160" y="14" font-family="serif" font-size="9" fill="#8b1a1a" text-anchor="middle" font-style="italic">La imprenta — instrumento de la Reforma</text>
-</svg></center>
+</svg>
+        <p class="illus-caption">Prensa de tipos móviles · Gutenberg, c. 1450</p>
       </div>
       <p>Sin la imprenta de Gutenberg, la Reforma habría muerto en Wittenberg. En semanas, las 95 Tesis llegaron a todos los rincones del Imperio. Por primera vez en la historia, las ideas viajaban más rápido que los ejércitos.</p>
       <blockquote>
@@ -1108,6 +1136,145 @@
         <cite>— Martín Lutero</cite>
       </blockquote>
     </article>
+
+    <article class="parchment-block">
+      <h2>✦ La Biblia en Lengua del Pueblo ✦</h2>
+      <div class="illus-wrap">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 180" width="280" height="180">
+  <defs>
+    <linearGradient id="bg4" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#e8dfc0"/><stop offset="100%" stop-color="#cfc09a"/></linearGradient>
+    <linearGradient id="cover4" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#8b1a1a"/><stop offset="100%" stop-color="#5c1111"/></linearGradient>
+    <filter id="glow4"><feGaussianBlur stdDeviation="2" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <rect width="280" height="180" fill="url(#bg4)"/>
+  <!-- sombra libro -->
+  <ellipse cx="140" cy="168" rx="95" ry="8" fill="rgba(20,10,0,0.2)"/>
+  <!-- tapa izquierda -->
+  <path d="M30,20 L140,15 L140,165 L30,160Z" fill="url(#cover4)"/>
+  <path d="M33,23 L137,18 L137,162 L33,157Z" fill="none" stroke="#c9a84c" stroke-width="1.2"/>
+  <!-- páginas izquierda -->
+  <path d="M40,25 L137,18 L137,162 L40,155Z" fill="#f5edcc"/>
+  <line x1="60" y1="35" x2="132" y2="30" stroke="#9a7c2e" stroke-width="0.6"/>
+  <line x1="60" y1="43" x2="132" y2="38" stroke="#c9a84c" stroke-width="0.5"/>
+  <line x1="60" y1="51" x2="132" y2="46" stroke="#1a0e05" stroke-width="0.7"/>
+  <line x1="60" y1="59" x2="132" y2="54" stroke="#1a0e05" stroke-width="0.7"/>
+  <line x1="60" y1="67" x2="132" y2="62" stroke="#1a0e05" stroke-width="0.7"/>
+  <line x1="60" y1="75" x2="132" y2="70" stroke="#1a0e05" stroke-width="0.7"/>
+  <line x1="60" y1="83" x2="132" y2="78" stroke="#1a0e05" stroke-width="0.7"/>
+  <line x1="60" y1="91" x2="132" y2="86" stroke="#1a0e05" stroke-width="0.7"/>
+  <line x1="60" y1="99" x2="132" y2="94" stroke="#1a0e05" stroke-width="0.7"/>
+  <line x1="60" y1="107" x2="132" y2="102" stroke="#1a0e05" stroke-width="0.7"/>
+  <line x1="60" y1="115" x2="132" y2="110" stroke="#9a7c2e" stroke-width="0.6"/>
+  <!-- letra capital iluminada izq -->
+  <rect x="55" y="27" width="18" height="22" fill="#8b1a1a" opacity="0.85"/>
+  <text x="64" y="43" font-family="serif" font-size="14" fill="#c9a84c" text-anchor="middle" font-weight="bold">I</text>
+  <!-- tapa derecha -->
+  <path d="M250,20 L140,15 L140,165 L250,160Z" fill="url(#cover4)"/>
+  <path d="M247,23 L143,18 L143,162 L247,157Z" fill="none" stroke="#c9a84c" stroke-width="1.2"/>
+  <!-- páginas derecha -->
+  <path d="M240,25 L143,18 L143,162 L240,155Z" fill="#f5edcc"/>
+  <line x1="150" y1="30" x2="232" y2="35" stroke="#9a7c2e" stroke-width="0.6"/>
+  <line x1="150" y1="38" x2="232" y2="43" stroke="#c9a84c" stroke-width="0.5"/>
+  <line x1="150" y1="46" x2="232" y2="51" stroke="#1a0e05" stroke-width="0.7"/>
+  <line x1="150" y1="54" x2="232" y2="59" stroke="#1a0e05" stroke-width="0.7"/>
+  <line x1="150" y1="62" x2="232" y2="67" stroke="#1a0e05" stroke-width="0.7"/>
+  <line x1="150" y1="70" x2="232" y2="75" stroke="#1a0e05" stroke-width="0.7"/>
+  <line x1="150" y1="78" x2="232" y2="83" stroke="#1a0e05" stroke-width="0.7"/>
+  <line x1="150" y1="86" x2="232" y2="91" stroke="#1a0e05" stroke-width="0.7"/>
+  <line x1="150" y1="94" x2="232" y2="99" stroke="#1a0e05" stroke-width="0.7"/>
+  <line x1="150" y1="102" x2="232" y2="107" stroke="#1a0e05" stroke-width="0.7"/>
+  <line x1="150" y1="110" x2="232" y2="115" stroke="#9a7c2e" stroke-width="0.6"/>
+  <!-- letra capital iluminada der -->
+  <rect x="208" y="27" width="18" height="22" fill="#8b1a1a" opacity="0.85"/>
+  <text x="217" y="43" font-family="serif" font-size="14" fill="#c9a84c" text-anchor="middle" font-weight="bold">D</text>
+  <!-- lomo -->
+  <rect x="137" y="12" width="6" height="155" fill="#6b1a1a"/>
+  <!-- marcadores dorados -->
+  <rect x="100" y="160" width="4" height="18" fill="#c9a84c" rx="1"/>
+  <rect x="178" y="158" width="4" height="20" fill="#c9a84c" rx="1"/>
+  <!-- brillo páginas -->
+  <line x1="140" y1="15" x2="140" y2="165" stroke="rgba(201,168,76,0.3)" stroke-width="1"/>
+  <text x="140" y="10" font-family="serif" font-size="9" fill="#8b1a1a" text-anchor="middle" font-style="italic">Biblia · Sola Scriptura</text>
+</svg>
+        <p class="illus-caption">Biblia de Lutero · 1534</p>
+      </div>
+      <p class="drop-cap">Lutero tradujo la Biblia al alemán entre 1521 y 1534, recluido en el castillo de Wartburg. Su versión moldeó la lengua alemana moderna. Tyndale hizo lo propio en inglés; Casiodoro de Reina, en castellano.</p>
+      <p>La Escritura en manos del pueblo fue el acto más revolucionario de la Reforma. El laico podía leer, juzgar y orar sin intermediario clerical.</p>
+    </article>
+
+    <article class="parchment-block">
+      <h2>✦ El Mapa de la Reforma ✦</h2>
+      <div class="illus-wrap">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200" width="320" height="200">
+  <defs>
+    <linearGradient id="bg6" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#d8d0b0"/><stop offset="100%" stop-color="#b8a880"/></linearGradient>
+  </defs>
+  <rect width="320" height="200" fill="url(#bg6)"/>
+  <!-- silueta Europa simplificada -->
+  <path d="M50,40 Q70,30 90,35 Q110,25 130,28 Q150,20 170,30 Q190,22 210,35 Q230,28 250,40 Q265,50 270,70 Q275,90 265,105 Q255,120 240,130 Q250,145 245,160 Q235,175 220,178 Q205,182 195,170 Q180,180 165,175 Q150,185 135,175 Q120,180 108,170 Q95,178 85,165 Q70,170 65,155 Q55,145 60,130 Q45,118 40,100 Q35,80 50,40Z" fill="#c8bc90" stroke="#9a8850" stroke-width="1.5"/>
+  <!-- mar -->
+  <path d="M0,100 Q20,90 50,100 Q60,120 40,140 Q20,150 0,140Z" fill="#a8c0d8" opacity="0.6"/>
+  <path d="M240,30 Q260,20 320,25 L320,200 Q280,200 250,180 Q240,160 245,140 Q260,120 265,105 Q275,90 270,70 Q265,50 240,30Z" fill="#a8c0d8" opacity="0.5"/>
+  <!-- focos de la Reforma — puntos dorados con etiqueta -->
+  <!-- Wittenberg -->
+  <circle cx="168" cy="72" r="7" fill="#8b1a1a" stroke="#c9a84c" stroke-width="2"/>
+  <circle cx="168" cy="72" r="3" fill="#c9a84c"/>
+  <text x="178" y="70" font-family="serif" font-size="7.5" fill="#1a0e05" font-weight="bold">Wittenberg</text>
+  <!-- Ginebra -->
+  <circle cx="140" cy="110" r="6" fill="#8b1a1a" stroke="#c9a84c" stroke-width="1.8"/>
+  <circle cx="140" cy="110" r="2.5" fill="#c9a84c"/>
+  <text x="148" y="108" font-family="serif" font-size="7" fill="#1a0e05">Ginebra</text>
+  <!-- Zúrich -->
+  <circle cx="152" cy="100" r="5" fill="#8b1a1a" stroke="#c9a84c" stroke-width="1.5"/>
+  <circle cx="152" cy="100" r="2" fill="#c9a84c"/>
+  <text x="160" y="98" font-family="serif" font-size="7" fill="#1a0e05">Zürich</text>
+  <!-- Londres -->
+  <circle cx="105" cy="72" r="6" fill="#8b1a1a" stroke="#c9a84c" stroke-width="1.8"/>
+  <circle cx="105" cy="72" r="2.5" fill="#c9a84c"/>
+  <text x="113" y="70" font-family="serif" font-size="7" fill="#1a0e05">Londres</text>
+  <!-- Paris -->
+  <circle cx="120" cy="90" r="5" fill="#5c1111" stroke="#9a7c2e" stroke-width="1.5"/>
+  <circle cx="120" cy="90" r="2" fill="#9a7c2e"/>
+  <text x="128" y="88" font-family="serif" font-size="7" fill="#1a0e05">París</text>
+  <!-- Roma -->
+  <circle cx="172" cy="138" r="6" fill="#5c1111" stroke="#9a7c2e" stroke-width="1.8"/>
+  <circle cx="172" cy="138" r="2.5" fill="#9a7c2e"/>
+  <text x="180" y="136" font-family="serif" font-size="7" fill="#1a0e05">Roma</text>
+  <!-- Leyenda -->
+  <rect x="20" y="155" width="10" height="10" rx="5" fill="#8b1a1a" stroke="#c9a84c" stroke-width="1.5"/>
+  <text x="34" y="164" font-family="serif" font-size="7.5" fill="#1a0e05">Foco reformado</text>
+  <rect x="20" y="170" width="10" height="10" rx="5" fill="#5c1111" stroke="#9a7c2e" stroke-width="1.5"/>
+  <text x="34" y="179" font-family="serif" font-size="7.5" fill="#1a0e05">Centro católico</text>
+  <text x="160" y="14" font-family="serif" font-size="9" fill="#8b1a1a" text-anchor="middle" font-style="italic">Europa · Siglo XVI</text>
+</svg>
+        <p class="illus-caption">Focos reformados en Europa · Siglo XVI</p>
+      </div>
+      <p>La Reforma se propagó en oleadas desde Wittenberg. Zwinglio reformó Zúrich; Calvino, Ginebra. En Inglaterra, Enrique VIII rompió con Roma por razones políticas y personales. Escocia, los Países Bajos y Escandinavia siguieron el camino protestante.</p>
+    </article>
+
+    <article class="parchment-block">
+      <h2>✦ Las Ramas del Protestantismo ✦</h2>
+      <div class="section-ornament">— ✦ —</div>
+      <h3>Luteranismo</h3>
+      <p>Fundado en Alemania y Escandinavia. Justificación por la fe; dos sacramentos: bautismo y eucaristía.</p>
+      <h3>Calvinismo</h3>
+      <p>La predestinación como doctrina central. Implantado en Suiza, Francia, Escocia y los Países Bajos.</p>
+      <h3>Anglicanismo</h3>
+      <p>La Iglesia de Inglaterra, con el rey como cabeza suprema. Doctrina híbrida entre catolicismo y protestantismo.</p>
+      <h3>Anabaptismo</h3>
+      <p>Rechazo del bautismo infantil y del Estado teocrático. Perseguidos por católicos y protestantes por igual.</p>
+      <blockquote>
+        "No hay más que una Iglesia de Cristo, aunque sus vestidos sean distintos."
+        <cite>— Felipe Melanchthon</cite>
+      </blockquote>
+    </article>
+
+    <article class="parchment-block">
+      <h2>✦ La Educación y el Legado Cultural ✦</h2>
+      <p class="drop-cap">La Reforma transformó la educación. Lutero y Melanchthon impulsaron escuelas públicas donde el pueblo aprendiera a leer para acceder a la Biblia. La alfabetización en Europa del Norte creció de manera exponencial.</p>
+      <p>Las universidades protestantes proliferaron. La música sacra —Bach, Schütz— alcanzó cimas insuperables. La ética del trabajo protestante sentó, según Max Weber, las bases del capitalismo moderno.</p>
+    </article>
+
   </div>
 
   <!-- COLUMNA LATERAL -->
@@ -1117,15 +1284,13 @@
       <h2>Figuras</h2>
       <ul class="medieval-list">
         <li><strong class="figura-nombre">Martín Lutero
-          <div class="figura-tooltip"><img src="lutero.jpeg" alt="Martín Lutero"><span>Martín Lutero</span>
-          <span>Martin Lutero nació el 10 de noviembre de 1483 en Eisleben, Alemania, su familia era bastante rica así que pudo ir a la universidad, pero en 1505, después de haber escapado a la muerte decidió entrar en un monasterio augustino. Cuando vio que listo era Lutero, su superior en el monasterio decidió que tenía que hacerse sacerdote y enseñar teología. 5 años después en 1512 recibió el título de doctor en biblia.  Y en 1515, 11 monasterios quedaron a su cargo. Sus grados académicos le llevaron a estudiar en profundidad los textos bíblicos, este estudio le convenció de que la Iglesia había perdido la visión de varias verdades centrales del cristianismo.  Entonces en 1517 da el alta a la reforma protestante clavando las 95 tesis. 
-          </span></div>
+          <div class="figura-tooltip"><img src="lutero.jpg" alt="Martín Lutero"><span>Martín Lutero</span></div>
         </strong> — Wittenberg, 1483–1546</li>
         <li><strong class="figura-nombre">Juan Calvino
-          <div class="figura-tooltip"><img src="calvino.png" alt="Juan Calvino"><span>Juan Calvino</span></div>
+          <div class="figura-tooltip"><img src="calvino.jpg" alt="Juan Calvino"><span>Juan Calvino</span></div>
         </strong> — Ginebra, 1509–1564</li>
         <li><strong class="figura-nombre">Ulrico Zwinglio
-          <div class="figura-tooltip"><img src="zwinglio.jpeg" alt="Ulrico Zwinglio"><span>Ulrico Zwinglio</span></div>
+          <div class="figura-tooltip"><img src="zwinglio.jpg" alt="Ulrico Zwinglio"><span>Ulrico Zwinglio</span></div>
         </strong> — Zúrich, 1484–1531</li>
         <li><strong class="figura-nombre">Enrique VIII
           <div class="figura-tooltip"><img src="enrique8.jpg" alt="Enrique VIII"><span>Enrique VIII</span></div>
@@ -1209,6 +1374,19 @@
         <li>Crisis de la autoridad papal en Occidente</li>
       </ul>
     </div>
+
+
+    <div class="aside-block">
+      <h2>Conceptos Clave</h2>
+      <ul class="medieval-list">
+        <li><strong>Sola Scriptura</strong> — Solo la Biblia</li>
+        <li><strong>Sola Fide</strong> — Solo la fe</li>
+        <li><strong>Sola Gratia</strong> — Solo la gracia</li>
+        <li><strong>Solus Christus</strong> — Solo Cristo</li>
+        <li><strong>Soli Deo Gloria</strong> — Solo a Dios la gloria</li>
+      </ul>
+    </div>
+
     <div class="aside-block">
       <h2>Ramas Protestantes</h2>
       <ul class="medieval-list">
@@ -1218,6 +1396,18 @@
         <li>Anabaptismo — Suiza</li>
         <li>Presbiterianismo — Escocia</li>
         <li>Puritanismo — Inglaterra</li>
+      </ul>
+    </div>
+
+    <div class="aside-block">
+      <h2>Textos Fundadores</h2>
+      <ul class="medieval-list">
+        <li>95 Tesis — Lutero, 1517</li>
+        <li>Confesión de Augsburgo — 1530</li>
+        <li>Institución de la Religión — Calvino, 1536</li>
+        <li>Biblia de Lutero — 1534</li>
+        <li>Book of Common Prayer — 1549</li>
+        <li>Biblia del Oso — Reina, 1569</li>
       </ul>
     </div>
 
@@ -1411,7 +1601,7 @@
     document.body.style.overflow = 'hidden';
     // Lanzar audio automáticamente al abrir
     if (!audio.src || audio.src === window.location.href) {
-      audio.src = 'tesis.mp3';
+      audio.src = 'audio_1.mp3';
       audio.load();
     }
     audio.play().then(() => {
@@ -1569,35 +1759,6 @@
       setTimeout(() => r.remove(), 700);
     });
   });
-  function togglePlayInline(btn) {
-    const audio = btn.closest('.audio-inline').querySelector('audio');
-    if (audio.paused) { audio.play(); btn.textContent = '⏸'; }
-    else { audio.pause(); btn.textContent = '▶'; }
-  }
-  function reiniciarInline(btn) {
-    const audio = btn.closest('.audio-inline').querySelector('audio');
-    audio.currentTime = 0; audio.play();
-    btn.closest('.custom-player').querySelector('.play-btn').textContent = '⏸';
-  }
-  function resetInline(audioEl) {
-    const player = audioEl.closest('.audio-inline').querySelector('.custom-player');
-    player.querySelector('.play-btn').textContent = '▶';
-    player.querySelector('.progress-bar').style.width = '0%';
-  }
-  function updateInline(audioEl) {
-    if (!audioEl.duration) return;
-    const player = audioEl.closest('.audio-inline').querySelector('.custom-player');
-    const pct = (audioEl.currentTime / audioEl.duration) * 100;
-    player.querySelector('.progress-bar').style.width = pct + '%';
-    player.querySelector('.time-display').textContent =
-      formatTime(audioEl.currentTime) + ' / ' + formatTime(audioEl.duration);
-  }
-  function saltarInline(e, wrap) {
-    const audio = wrap.closest('.audio-inline').querySelector('audio');
-    if (!audio.duration) return;
-    const rect = wrap.getBoundingClientRect();
-    audio.currentTime = ((e.clientX - rect.left) / rect.width) * audio.duration;
-  }
 </script>
 </body>
 </html>
