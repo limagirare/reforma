@@ -1459,21 +1459,18 @@
     </div>
 
     <!-- REPRODUCTOR DE AUDIO -->
-    <div class="audio-section">
-      <div class="audio-label">⚜ Lectura en voz ⚜</div>
-      <div class="audio-controls">
-        <div class="custom-player" id="playerWrap">
-          <button class="play-btn" id="playBtn" onclick="togglePlay()">▶</button>
-          <div class="progress-wrap" id="progressWrap" onclick="saltarAudio(event)">
-            <div class="progress-bar" id="progressBar"></div>
-          </div>
-          <span class="time-display" id="timeDisplay">0:00 / 0:00</span>
-          <button class="replay-btn" onclick="reiniciarAudio()">↺ Reiniciar</button>
-        </div>
-      </div>
-      <audio id="audioPlayer" onended="resetPlayer()" ontimeupdate="actualizarProgreso()"></audio>
+    
+<div class="audio-inline">
+  <div class="custom-player">
+    <button class="play-btn" onclick="togglePlayInline(this)">▶</button>
+    <div class="progress-wrap" onclick="saltarInline(event, this)">
+      <div class="progress-bar"></div>
     </div>
-
+    <span class="time-display">0:00 / 0:00</span>
+    <button class="replay-btn" onclick="reiniciarInline(this)">↺ Reiniciar</button>
+  </div>
+  <audio src="tesis.mp3" onended="resetInline(this)" ontimeupdate="updateInline(this)"></audio>  <!-- ← CHANGER LE FICHIER -->
+</div>
     <!-- TEXTO DE LAS 95 TESIS -->
     <div class="modal-body">
       <p class="tesis-intro">
