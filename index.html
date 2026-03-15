@@ -863,7 +863,13 @@
     margin: 28px 0;
   }
   .illus-row .illus-wrap { flex: 1; min-width: 140px; max-width: 200px; }
-
+/* ===== AUDIO INLINE ===== */
+.audio-inline {
+  margin: 0 0 24px;
+  border: 1px solid rgba(154,124,46,0.3);
+  background: linear-gradient(to bottom, rgba(139,26,26,0.04), transparent);
+  padding: 10px 14px;
+}
 </style>
 </head>
 <body>
@@ -1781,6 +1787,59 @@
       setTimeout(() => r.remove(), 700);
     });
   });
+  // ===== AUDIO INLINE (reproductores dentro de artículos) =====
+function togglePlayInline(btn) {
+  const wrap = btn.closest('.audio-inline');
+  const audioEl = wrap.querySelector('audio');
+
+  // Pausar todos los demás reproductores inline
+  document.querySelectorAll('.audio-inline audio').forEach(a => {
+    if (a !== audioEl && !a.paused) {
+      a.pause();
+      a.closest('.audio-inline').querySelector('.play-btn').textContent = '▶';
+    }
+  });
+
+  if (audioEl.paused) {
+    audioEl.play();
+    btn.textContent = '⏸';
+  } else {
+    audioEl.pause();
+    btn.textContent = '▶';
+  }
+}
+
+function reiniciarInline(btn) {
+  const wrap = btn.closest('.audio-inline');
+  const audioEl = wrap.querySelector('audio');
+  audioEl.currentTime = 0;
+  audioEl.play();
+  wrap.querySelector('.play-btn').textContent = '⏸';
+}
+
+function resetInline(audioEl) {
+  const wrap = audioEl.closest('.audio-inline');
+  wrap.querySelector('.play-btn').textContent = '▶';
+  wrap.querySelector('.progress-bar').style.width = '0%';
+  wrap.querySelector('.time-display').textContent = '0:00 / ' + formatTime(audioEl.duration);
+}
+
+function updateInline(audioEl) {
+  if (!audioEl.duration) return;
+  const wrap = audioEl.closest('.audio-inline');
+  const pct = (audioEl.currentTime / audioEl.duration) * 100;
+  wrap.querySelector('.progress-bar').style.width = pct + '%';
+  wrap.querySelector('.time-display').textContent =
+    formatTime(audioEl.currentTime) + ' / ' + formatTime(audioEl.duration);
+}
+
+function saltarInline(e, progressWrap) {
+  const wrap = progressWrap.closest('.audio-inline');
+  const audioEl = wrap.querySelector('audio');
+  if (!audioEl.duration) return;
+  const rect = progressWrap.getBoundingClientRect();
+  audioEl.currentTime = ((e.clientX - rect.left) / rect.width) * audioEl.duration;
+}
 </script>
 </body>
 </html>
