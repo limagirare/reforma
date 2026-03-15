@@ -1103,17 +1103,7 @@
 
     <article class="parchment-block">
       <h2>✦ Las Guerras de Religión ✦</h2>
-      <div class="audio-inline">
-  <div class="custom-player">
-    <button class="play-btn" onclick="togglePlayInline(this)">▶</button>
-    <div class="progress-wrap" onclick="saltarInline(event, this)">
-      <div class="progress-bar"></div>
-    </div>
-    <span class="time-display">0:00 / 0:00</span>
-    <button class="replay-btn" onclick="reiniciarInline(this)">↺ Reiniciar</button>
-  </div>
-  <audio src="guerra1.ogg" onended="resetInline(this)" ontimeupdate="updateInline(this)"></audio>  <!-- ← CHANGER LE FICHIER -->
-</div>
+
       <div class="illus-wrap">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 200" width="260" height="200">
   <defs>
@@ -1145,9 +1135,31 @@
         <p class="illus-caption">Reformatio et Bellum · Europa, 1524–1648</p>
       </div>
       <p>
+              <div class="audio-inline">
+  <div class="custom-player">
+    <button class="play-btn" onclick="togglePlayInline(this)">▶</button>
+    <div class="progress-wrap" onclick="saltarInline(event, this)">
+      <div class="progress-bar"></div>
+    </div>
+    <span class="time-display">0:00 / 0:00</span>
+    <button class="replay-btn" onclick="reiniciarInline(this)">↺ Reiniciar</button>
+  </div>
+  <audio src="guerra1.ogg" onended="resetInline(this)" ontimeupdate="updateInline(this)"></audio>  <!-- ← CHANGER LE FICHIER -->
+</div>
         La ruptura no fue solo espiritual: fue de fuego y espada. La noche de San Bartolomé (1572) tiñó de sangre las calles de París. La Paz de Augsburgo (1555) consagró el principio <em>cuius regio, eius religio</em>.
       </p>
       <p>
+              <div class="audio-inline">
+  <div class="custom-player">
+    <button class="play-btn" onclick="togglePlayInline(this)">▶</button>
+    <div class="progress-wrap" onclick="saltarInline(event, this)">
+      <div class="progress-bar"></div>
+    </div>
+    <span class="time-display">0:00 / 0:00</span>
+    <button class="replay-btn" onclick="reiniciarInline(this)">↺ Reiniciar</button>
+  </div>
+  <audio src="guerra2.ogg" onended="resetInline(this)" ontimeupdate="updateInline(this)"></audio>  <!-- ← CHANGER LE FICHIER -->
+</div>
         Calvino gobernó Ginebra como ciudad de Dios; Enrique VIII fundó la Iglesia Anglicana. La Reforma no fue un movimiento uniforme, sino un huracán que sopló en mil direcciones.
       </p>
     </article>
@@ -1155,6 +1167,17 @@
 
     <article class="parchment-block">
       <h2>✦ La Imprenta — Arma de Dios ✦</h2>
+      <div class="audio-inline">
+  <div class="custom-player">
+    <button class="play-btn" onclick="togglePlayInline(this)">▶</button>
+    <div class="progress-wrap" onclick="saltarInline(event, this)">
+      <div class="progress-bar"></div>
+    </div>
+    <span class="time-display">0:00 / 0:00</span>
+    <button class="replay-btn" onclick="reiniciarInline(this)">↺ Reiniciar</button>
+  </div>
+  <audio src="imprenta.ogg" onended="resetInline(this)" ontimeupdate="updateInline(this)"></audio>  <!-- ← CHANGER LE FICHIER -->
+</div>
       <div class="illus-wrap">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200" width="320" height="200">
   <defs>
@@ -1211,6 +1234,17 @@
 
     <article class="parchment-block">
       <h2>✦ La Biblia en Lengua del Pueblo ✦</h2>
+      <div class="audio-inline">
+  <div class="custom-player">
+    <button class="play-btn" onclick="togglePlayInline(this)">▶</button>
+    <div class="progress-wrap" onclick="saltarInline(event, this)">
+      <div class="progress-bar"></div>
+    </div>
+    <span class="time-display">0:00 / 0:00</span>
+    <button class="replay-btn" onclick="reiniciarInline(this)">↺ Reiniciar</button>
+  </div>
+  <audio src="biblia.ogg" onended="resetInline(this)" ontimeupdate="updateInline(this)"></audio>  <!-- ← CHANGER LE FICHIER -->
+</div>
       <div class="illus-wrap">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 180" width="280" height="180">
   <defs>
@@ -1277,48 +1311,7 @@
     <article class="parchment-block">
       <h2>✦ El Mapa de la Reforma ✦</h2>
       <div class="illus-wrap">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200" width="320" height="200">
-  <defs>
-    <linearGradient id="bg6" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#d8d0b0"/><stop offset="100%" stop-color="#b8a880"/></linearGradient>
-  </defs>
-  <rect width="320" height="200" fill="url(#bg6)"/>
-  <!-- silueta Europa simplificada -->
-  <path d="M50,40 Q70,30 90,35 Q110,25 130,28 Q150,20 170,30 Q190,22 210,35 Q230,28 250,40 Q265,50 270,70 Q275,90 265,105 Q255,120 240,130 Q250,145 245,160 Q235,175 220,178 Q205,182 195,170 Q180,180 165,175 Q150,185 135,175 Q120,180 108,170 Q95,178 85,165 Q70,170 65,155 Q55,145 60,130 Q45,118 40,100 Q35,80 50,40Z" fill="#c8bc90" stroke="#9a8850" stroke-width="1.5"/>
-  <!-- mar -->
-  <path d="M0,100 Q20,90 50,100 Q60,120 40,140 Q20,150 0,140Z" fill="#a8c0d8" opacity="0.6"/>
-  <path d="M240,30 Q260,20 320,25 L320,200 Q280,200 250,180 Q240,160 245,140 Q260,120 265,105 Q275,90 270,70 Q265,50 240,30Z" fill="#a8c0d8" opacity="0.5"/>
-  <!-- focos de la Reforma — puntos dorados con etiqueta -->
-  <!-- Wittenberg -->
-  <circle cx="168" cy="72" r="7" fill="#8b1a1a" stroke="#c9a84c" stroke-width="2"/>
-  <circle cx="168" cy="72" r="3" fill="#c9a84c"/>
-  <text x="178" y="70" font-family="serif" font-size="7.5" fill="#1a0e05" font-weight="bold">Wittenberg</text>
-  <!-- Ginebra -->
-  <circle cx="140" cy="110" r="6" fill="#8b1a1a" stroke="#c9a84c" stroke-width="1.8"/>
-  <circle cx="140" cy="110" r="2.5" fill="#c9a84c"/>
-  <text x="148" y="108" font-family="serif" font-size="7" fill="#1a0e05">Ginebra</text>
-  <!-- Zúrich -->
-  <circle cx="152" cy="100" r="5" fill="#8b1a1a" stroke="#c9a84c" stroke-width="1.5"/>
-  <circle cx="152" cy="100" r="2" fill="#c9a84c"/>
-  <text x="160" y="98" font-family="serif" font-size="7" fill="#1a0e05">Zürich</text>
-  <!-- Londres -->
-  <circle cx="105" cy="72" r="6" fill="#8b1a1a" stroke="#c9a84c" stroke-width="1.8"/>
-  <circle cx="105" cy="72" r="2.5" fill="#c9a84c"/>
-  <text x="113" y="70" font-family="serif" font-size="7" fill="#1a0e05">Londres</text>
-  <!-- Paris -->
-  <circle cx="120" cy="90" r="5" fill="#5c1111" stroke="#9a7c2e" stroke-width="1.5"/>
-  <circle cx="120" cy="90" r="2" fill="#9a7c2e"/>
-  <text x="128" y="88" font-family="serif" font-size="7" fill="#1a0e05">París</text>
-  <!-- Roma -->
-  <circle cx="172" cy="138" r="6" fill="#5c1111" stroke="#9a7c2e" stroke-width="1.8"/>
-  <circle cx="172" cy="138" r="2.5" fill="#9a7c2e"/>
-  <text x="180" y="136" font-family="serif" font-size="7" fill="#1a0e05">Roma</text>
-  <!-- Leyenda -->
-  <rect x="20" y="155" width="10" height="10" rx="5" fill="#8b1a1a" stroke="#c9a84c" stroke-width="1.5"/>
-  <text x="34" y="164" font-family="serif" font-size="7.5" fill="#1a0e05">Foco reformado</text>
-  <rect x="20" y="170" width="10" height="10" rx="5" fill="#5c1111" stroke="#9a7c2e" stroke-width="1.5"/>
-  <text x="34" y="179" font-family="serif" font-size="7.5" fill="#1a0e05">Centro católico</text>
-  <text x="160" y="14" font-family="serif" font-size="9" fill="#8b1a1a" text-anchor="middle" font-style="italic">Europa · Siglo XVI</text>
-</svg>
+        <img src="mapa.png"></img>
         <p class="illus-caption">Focos reformados en Europa · Siglo XVI</p>
       </div>
       <p>La Reforma se propagó en oleadas desde Wittenberg. Zwinglio reformó Zúrich; Calvino, Ginebra. En Inglaterra, Enrique VIII rompió con Roma por razones políticas y personales. Escocia, los Países Bajos y Escandinavia siguieron el camino protestante.</p>
@@ -1326,6 +1319,7 @@
 
     <article class="parchment-block">
       <h2>✦ Las Ramas del Protestantismo ✦</h2>
+      <img src="ramas.png"></img>
       <div class="section-ornament">— ✦ —</div>
       <h3>Luteranismo</h3>
       <p>Fundado en Alemania y Escandinavia. Justificación por la fe; dos sacramentos: bautismo y eucaristía.</p>
