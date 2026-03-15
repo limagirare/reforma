@@ -987,7 +987,17 @@
     </article>
 
     <article class="parchment-block">
-    
+      <div class="audio-inline">
+  <div class="custom-player">
+    <button class="play-btn" onclick="togglePlayInline(this)">▶</button>
+    <div class="progress-wrap" onclick="saltarInline(event, this)">
+      <div class="progress-bar"></div>
+    </div>
+    <span class="time-display">0:00 / 0:00</span>
+    <button class="replay-btn" onclick="reiniciarInline(this)">↺ Reiniciar</button>
+  </div>
+  <audio src="reforma.mp3" onended="resetInline(this)" ontimeupdate="updateInline(this)"></audio>  <!-- ← CHANGER LE FICHIER -->
+</div>
       <h2>✦ Las Doctrinas de la Nueva Fe ✦</h2>
       <div class="illus-wrap">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 200" width="340" height="200">
