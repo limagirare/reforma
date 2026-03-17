@@ -1254,6 +1254,87 @@
       background: linear-gradient(to bottom, rgba(139, 26, 26, 0.04), transparent);
       padding: 10px 14px;
     }
+
+  /* ══════════════════════════════════════════
+     MODAL PERSONAJE
+  ══════════════════════════════════════════ */
+  .modal-persona-overlay {
+    display: none; position: fixed; inset: 0;
+    background: rgba(5,3,1,0.82); z-index: 2000;
+    align-items: center; justify-content: center;
+    padding: 20px; backdrop-filter: blur(5px);
+  }
+  .modal-persona-overlay.open { display: flex; }
+  .modal-persona-box {
+    background: var(--parchment);
+    border: 2px double var(--gold);
+    box-shadow: 0 0 80px rgba(0,0,0,0.75), inset 0 0 40px rgba(154,124,46,0.06);
+    max-width: 480px; width: 100%; position: relative;
+    animation: modalIn 0.4s cubic-bezier(0.22,1,0.36,1);
+  }
+  .modal-persona-box::before {
+    content: ''; position: absolute; inset: 7px;
+    border: 1px solid rgba(154,124,46,0.22);
+    pointer-events: none; z-index: 1;
+  }
+  .modal-persona-header {
+    background: var(--red); padding: 16px 20px 12px;
+    text-align: center; position: relative;
+    animation: modalHeaderPulse 5s ease-in-out infinite;
+  }
+  .modal-persona-header h2 {
+    font-family: 'Cinzel Decorative', serif; font-size: 1rem;
+    color: var(--parchment); border: none; margin: 0;
+    letter-spacing: 0.08em; animation: none;
+  }
+  .modal-persona-header p {
+    font-family: 'Cinzel', serif; font-size: 0.65rem;
+    color: rgba(242,232,201,0.7); margin: 4px 0 0;
+    letter-spacing: 0.15em; text-transform: uppercase;
+  }
+  .modal-persona-close {
+    position: absolute; top: 12px; right: 14px;
+    background: none; border: 1px solid rgba(242,232,201,0.4);
+    color: var(--parchment); font-family: 'Cinzel', serif;
+    font-size: 0.65rem; padding: 4px 10px; cursor: pointer; transition: all 0.2s;
+  }
+  .modal-persona-close:hover { background: rgba(242,232,201,0.15); transform: scale(1.05); }
+  .modal-persona-body { display: flex; gap: 22px; padding: 24px 26px 28px; align-items: flex-start; }
+  .modal-persona-img {
+    width: 115px; height: 145px; object-fit: cover; object-position: top;
+    flex-shrink: 0; border: 1px solid var(--gold);
+    filter: sepia(15%) contrast(1.05); box-shadow: 3px 3px 12px rgba(0,0,0,0.35);
+  }
+  .modal-persona-img-placeholder {
+    width: 115px; height: 145px; flex-shrink: 0;
+    border: 1px solid var(--gold);
+    background: linear-gradient(145deg, var(--parchment-mid), var(--parchment-dark));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 3rem; color: var(--gold); box-shadow: 3px 3px 12px rgba(0,0,0,0.25);
+  }
+  .modal-persona-info { flex: 1; }
+  .modal-persona-dates {
+    font-family: 'Cinzel', serif; font-size: 0.68rem; color: var(--gold);
+    letter-spacing: 0.1em; margin-bottom: 10px;
+    border-bottom: 1px solid rgba(154,124,46,0.25); padding-bottom: 8px;
+  }
+  .modal-persona-bio {
+    font-family: 'IM Fell English', serif; font-size: 0.87rem;
+    color: var(--ink-light); line-height: 1.75; text-align: justify; hyphens: auto;
+  }
+  .modal-persona-quote {
+    margin-top: 12px; border-left: 2px solid var(--red);
+    padding: 7px 12px; font-style: italic; font-size: 0.78rem;
+    color: var(--ink-faint); background: rgba(154,124,46,0.05); line-height: 1.6;
+  }
+  .figura-btn {
+    background: none; border: none; cursor: pointer;
+    font-family: 'IM Fell English', serif; font-size: 0.88rem;
+    color: var(--ink); font-weight: bold; padding: 0;
+    border-bottom: 1px dotted var(--gold); transition: color 0.2s; text-align: left;
+  }
+  .figura-btn:hover { color: var(--red); }
+
   </style>
 </head>
 
@@ -1844,30 +1925,13 @@
       <div class="aside-block">
         <h2>Figuras</h2>
         <ul class="medieval-list">
-          <li><strong class="figura-nombre">Martín Lutero
-              <div class="figura-tooltip"><img src="lutero.jpeg" alt="Martín Lutero"><span>Martín Lutero</span></div>
-            </strong> — Wittenberg, 1483–1546</li>
-          <li><strong class="figura-nombre">Juan Calvino
-              <div class="figura-tooltip"><img src="calvino.png" alt="Juan Calvino"><span>Juan Calvino</span></div>
-            </strong> — Ginebra, 1509–1564</li>
-          <li><strong class="figura-nombre">Ulrico Zwinglio
-              <div class="figura-tooltip"><img src="zwinglio.jpeg" alt="Ulrico Zwinglio"><span>Ulrico Zwinglio</span>
-              </div>
-            </strong> — Zúrich, 1484–1531</li>
-          <li><strong class="figura-nombre">Enrique VIII
-              <div class="figura-tooltip"><img src="enrique8.jpg" alt="Enrique VIII"><span>Enrique VIII</span></div>
-            </strong> — Inglaterra, 1491–1547</li>
-          <li><strong class="figura-nombre">Felipe Melanchthon
-              <div class="figura-tooltip"><img src="melanchthon.jpg" alt="Felipe Melanchthon"><span>Felipe
-                  Melanchthon</span></div>
-            </strong> — 1497–1560</li>
-          <li><strong class="figura-nombre">Juan Knox
-              <div class="figura-tooltip"><img src="knox.jpg" alt="Juan Knox"><span>Juan Knox</span></div>
-            </strong> — Escocia, 1514–1572</li>
-          <li><strong class="figura-nombre">Erasmo de Róterdam
-              <div class="figura-tooltip"><img src="erasmo.jpg" alt="Erasmo de Róterdam"><span>Erasmo de Róterdam</span>
-              </div>
-            </strong> — 1466–1536</li>
+          <li><button class="figura-btn" onclick="abrirPersonaje('lutero')">Martín Lutero</button> — Wittenberg, 1483–1546</li>
+          <li><button class="figura-btn" onclick="abrirPersonaje('calvino')">Juan Calvino</button> — Ginebra, 1509–1564</li>
+          <li><button class="figura-btn" onclick="abrirPersonaje('zwinglio')">Ulrico Zwinglio</button> — Zúrich, 1484–1531</li>
+          <li><button class="figura-btn" onclick="abrirPersonaje('enrique8')">Enrique VIII</button> — Inglaterra, 1491–1547</li>
+          <li><button class="figura-btn" onclick="abrirPersonaje('melanchthon')">Felipe Melanchthon</button> — 1497–1560</li>
+          <li><button class="figura-btn" onclick="abrirPersonaje('knox')">Juan Knox</button> — Escocia, 1514–1572</li>
+          <li><button class="figura-btn" onclick="abrirPersonaje('erasmo')">Erasmo de Róterdam</button> — 1466–1536</li>
         </ul>
       </div>
 
@@ -1978,6 +2042,28 @@
 
     </aside>
   </main>
+
+
+  <!-- ========== MODAL PERSONAJE ========== -->
+  <div class="modal-persona-overlay" id="modalPersonaje" onclick="cerrarPersonajeFuera(event)">
+    <div class="modal-persona-box">
+      <div class="modal-persona-header">
+        <button class="modal-persona-close" onclick="cerrarPersonaje()">✕ Cerrar</button>
+        <h2 id="personajeNombre">—</h2>
+        <p id="personajeLugar">—</p>
+      </div>
+      <div class="modal-persona-body">
+        <img class="modal-persona-img" id="personajeImg" src="" alt=""
+          onerror="this.style.display='none';document.getElementById('personajePlaceholder').style.display='flex';">
+        <div class="modal-persona-img-placeholder" id="personajePlaceholder" style="display:none;">✝</div>
+        <div class="modal-persona-info">
+          <div class="modal-persona-dates" id="personajeFechas">—</div>
+          <p class="modal-persona-bio" id="personajeBio">—</p>
+          <div class="modal-persona-quote" id="personajeQuote" style="display:none;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <footer>
     <p>✦ Scriptum Anno Domini MMXXVI · Omnia Ad Maiorem Dei Gloriam ✦</p>
@@ -2358,7 +2444,7 @@
     function cerrarTesisFuera(e) {
       if (e.target === document.getElementById('modalTesis')) cerrarTesis();
     }
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') cerrarTesis(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') { cerrarTesis(); cerrarPersonaje(); } });
 
     // ===== AUDIO =====
     const audio = document.getElementById('audioPlayer');
@@ -2554,6 +2640,78 @@
       const rect = progressWrap.getBoundingClientRect();
       audioEl.currentTime = ((e.clientX - rect.left) / rect.width) * audioEl.duration;
     }
+
+  // ===== DATOS PERSONAJES =====
+  const personajes = {
+    lutero: {
+      nombre: 'Martín Lutero', lugar: 'Eisleben, Sajonia',
+      fechas: '10 nov. 1483 — 18 feb. 1546', img: 'lutero.jpeg',
+      bio: 'Fraile agustino y profesor de teología en Wittenberg. En 1517 publicó sus 95 Tesis contra la venta de indulgencias, encendiendo la Reforma Protestante. Excomulgado en 1521, tradujo la Biblia al alemán y fundó el luteranismo.',
+      cita: '«Aquí me encuentro, no puedo hacer otra cosa. Que Dios me ayude. Amén.»'
+    },
+    calvino: {
+      nombre: 'Juan Calvino', lugar: 'Noyon, Francia',
+      fechas: '10 jul. 1509 — 27 may. 1564', img: 'calvino.png',
+      bio: 'Teólogo francés que transformó Ginebra en ciudad protestante. Su Institución de la Religión Cristiana sistematizó la doctrina reformada. Desarrolló la predestinación e influyó en los Países Bajos, Escocia y América.',
+      cita: '«Nuestra sabiduría verdadera consiste en el conocimiento de Dios y de nosotros mismos.»'
+    },
+    zwinglio: {
+      nombre: 'Ulrico Zwinglio', lugar: 'Wildhaus, Suiza',
+      fechas: '1 ene. 1484 — 11 oct. 1531', img: 'zwinglio.jpeg',
+      bio: 'Reformador que convirtió Zúrich en el primer cantón protestante desde 1519. Discrepó con Lutero sobre la eucaristía en el Coloquio de Marburgo (1529). Murió en la batalla de Kappel defendiendo la causa reformada.',
+      cita: '«La Escritura es la regla y norma por la que deben ser juzgados todos los dogmas.»'
+    },
+    enrique8: {
+      nombre: 'Enrique VIII', lugar: 'Greenwich, Inglaterra',
+      fechas: '28 jun. 1491 — 28 ene. 1547', img: 'enrique8.jpg',
+      bio: 'Rey de Inglaterra que en 1534 se proclamó Cabeza Suprema de la Iglesia Anglicana, rompiendo con Roma. Su motivo fue la negativa papal a anular su matrimonio con Catalina de Aragón.',
+      cita: '«El rey de Inglaterra no reconoce superior alguno en la tierra.»'
+    },
+    melanchthon: {
+      nombre: 'Felipe Melanchthon', lugar: 'Bretten, Alemania',
+      fechas: '16 feb. 1497 — 19 abr. 1560', img: 'melanchthon.jpg',
+      bio: 'Humanista y teólogo, colaborador más próximo de Lutero. Redactó la Confesión de Augsburgo (1530), documento fundacional del luteranismo. Conocido como el Preceptor de Alemania por su labor educativa.',
+      cita: '«No hay más que una Iglesia de Cristo, aunque sus vestidos sean distintos.»'
+    },
+    knox: {
+      nombre: 'Juan Knox', lugar: 'Haddington, Escocia',
+      fechas: '1514 — 24 nov. 1572', img: 'knox.jpg',
+      bio: 'Reformador escocés discípulo de Calvino en Ginebra. Regresó a Escocia para liderar la Reforma frente a María Estuardo. Fundó la Iglesia Presbiteriana de Escocia y redactó la Confesión Escocesa (1560).',
+      cita: '«Un hombre con Dios siempre es una mayoría.»'
+    },
+    erasmo: {
+      nombre: 'Erasmo de Róterdam', lugar: 'Róterdam, Países Bajos',
+      fechas: '28 oct. 1466 — 12 jul. 1536', img: 'erasmo.jpg',
+      bio: 'Humanista y filólogo, el intelectual más influyente de su época. Criticó la corrupción eclesiástica en el Elogio de la locura, pero rechazó la Reforma de Lutero. Editó el Nuevo Testamento griego, herramienta clave de los reformadores.',
+      cita: '«En el país de los ciegos, el tuerto es rey.»'
+    }
+  };
+
+  function abrirPersonaje(id) {
+    const p = personajes[id];
+    if (!p) return;
+    document.getElementById('personajeNombre').textContent = p.nombre;
+    document.getElementById('personajeLugar').textContent = p.lugar;
+    document.getElementById('personajeFechas').textContent = p.fechas;
+    document.getElementById('personajeBio').textContent = p.bio;
+    const img = document.getElementById('personajeImg');
+    const ph  = document.getElementById('personajePlaceholder');
+    img.src = p.img; img.alt = p.nombre;
+    img.style.display = 'block'; ph.style.display = 'none';
+    const q = document.getElementById('personajeQuote');
+    if (p.cita) { q.textContent = p.cita; q.style.display = 'block'; }
+    else { q.style.display = 'none'; }
+    document.getElementById('modalPersonaje').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function cerrarPersonaje() {
+    document.getElementById('modalPersonaje').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function cerrarPersonajeFuera(e) {
+    if (e.target === document.getElementById('modalPersonaje')) cerrarPersonaje();
+  }
+
   </script>
 </body>
 
